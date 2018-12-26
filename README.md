@@ -82,6 +82,14 @@ Put server ‘Belgium’ on top in : **/etc/pacman.d/mirrorlist**.
 Use the pacstrap script to install the base package group: `pacstrap /mnt base`  
 
 ## Configure the system
-Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
 Copy _'wpa_supplicant'_ file to **/mnt/var** for reuse in base system: `cp wpa_supplicant.conf /mnt/var`  
-Change root into the new system: `arch-chroot /mnt`
+
+Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
+
+Change root into the new system: `arch-chroot /mnt`  
+Disable beep: `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
+Set time zone:  
+`ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
+`hwclock --systohc`  
+Localization:
+
