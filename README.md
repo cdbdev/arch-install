@@ -177,7 +177,7 @@ Edit _'/etc/default/grub'_ and add the following to variable GRUB_CMDLINE_LINUX_
 
 Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
 
-### Reboot
+## Reboot
 Exit chroot: `exit`  
 Manually unmount all the partitions: `umount -R /mnt`  
 `reboot`
