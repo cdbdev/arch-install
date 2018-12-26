@@ -87,9 +87,15 @@ Copy _'wpa_supplicant'_ file to **/mnt/var** for reuse in base system: `cp wpa_s
 Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
 
 Change root into the new system: `arch-chroot /mnt`  
+
 Disable beep: `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
+
 Set time zone:  
   `ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
   `hwclock --systohc`  
-Localization:
+  
+Localization:  
+Uncomment _'en_US.UTF-8 UTF-8'_ in : **/etc/locale.gen**  
+Generate: locale-gen  
+Enter: 'LANG=en_US.UTF-8' in : **/etc/locale.conf**
 
