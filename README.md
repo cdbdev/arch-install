@@ -90,7 +90,8 @@ Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`
 ### Chroot
 Change root into the new system: `arch-chroot /mnt`  
 
-Disable beep: `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
+### Disable beep 
+`echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
 
 ### Time zone
   `ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
@@ -107,4 +108,18 @@ Enter: **myarch** in: _/etc/hostname_
 Enter in: _/etc/hosts_:  
 	**127.0.0.1		localhost**  
 	**::1			localhost**  
+
+### Root password
+`passwd`
+
+### User creation
+`useradd --create-home chris`  
+`passwd chris`  
+
+### Set mirrors
+Install reflector package: `pacman -S reflector`  
+Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`
+
+## Install extra packages
+`pacman -S pacman-contrib sudo ufw wpa_supplicant vim`  
 
