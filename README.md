@@ -48,7 +48,7 @@ Remove existing **root** partition with: `d` followed by partition number.
 _OPTIONAL remove existing **swap** partition with command `d` followed by partition number._
 
 Create new **root** partition with: `n` followed by:  
-Partition number  
-First Sector (previous sector + 1)  
-Last Sector **+412G**  
-Partition Type **8300** (Linux=8300)  
+- Partition number  
+- First Sector (previous sector + 1)  
+- Last Sector **+412G**  
+- Partition Type **8300** (Linux=8300)  
