@@ -3,6 +3,7 @@ This guide documents the specific steps needed to install Arch Linux on my Lenov
 
 # Installation media
 Download an installation image from '' and create the installation media:
+
 In GNU/Linux:
 Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (Do not append a partition number, so do not use something like /dev/sdb1):
 dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
