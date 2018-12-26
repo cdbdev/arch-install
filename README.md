@@ -133,7 +133,8 @@ Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save 
 
 #### Enable sudo for user
 `visudo`  
-Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
+Enter the following after _'root ALL=(ALL) ALL'_:  
+`chris ALL=(ALL) ALL`
 
 #### Add user to group 'wheel'
 `gpasswd -a chris wheel`
