@@ -89,7 +89,7 @@ Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`
 Change root into the new system: `arch-chroot /mnt`  
 Disable beep: `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
 Set time zone:  
-`ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
-`hwclock --systohc`  
+  `ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
+  `hwclock --systohc`  
 Localization:
 
