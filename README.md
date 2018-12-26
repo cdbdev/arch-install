@@ -101,8 +101,8 @@ Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_
 Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
 
 Network configuration:  
-Enter: **myarch in: _/etc/hostname_  
-Enter in: _/etc/hosts_: 
+Enter: **myarch** in: _/etc/hostname_  
+Enter in: _/etc/hosts_:  
 	**127.0.0.1		localhost**
 	**::1			localhost	**
 
