@@ -170,8 +170,8 @@ Add **acpi_backlight=none  amdgpu.dc=0** to variable GRUB_CMDLINE_LINUX_DEFAULT 
 
 Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
 
-### Reboot
-Exit chroot: `exit`
+#### Reboot
+Exit chroot: `exit`  
 Manually unmount all the partitions: `umount -R /mnt`  
 `reboot`
 
