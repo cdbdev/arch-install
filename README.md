@@ -1,2 +1,2 @@
-# arch-install
+# Installation guide
 Installation guide
