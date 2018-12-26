@@ -39,6 +39,7 @@ Check connection: `ping www.google.be`
 `timedatectl set-ntp true`  
 
 ### Partition the disks
-Because I have a _'GUID Partition Table (GPT)'_, I'll use **gdisk**.  
-Open gdisk: `gdisk /dev/sda`  
+Because I have a _'GUID Partition Table (GPT)'_, I'll be using **gdisk**.  
 
+Start gdisk: `gdisk /dev/sda`  
+Remove **root** partition: d
