@@ -92,22 +92,22 @@ Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`
 ### Chroot
 Change root into the new system: `arch-chroot /mnt`  
 
-### Disable beep 
+#### Disable beep 
 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
 
-### Time zone
+#### Time zone
   ```
   ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
   hwclock --systohc
   ```
   
-### Localization
+#### Localization
 Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
 Generate locale: `locale-gen`  
 Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_  
 Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
 
-### Network configuration
+#### Network configuration
 Enter: **myarch** in: _/etc/hostname_  
 Enter in: _/etc/hosts_:  
 ```
@@ -115,30 +115,30 @@ Enter in: _/etc/hosts_:
 ::1       localhost
 ```	
 
-### Root password
+#### Root password
 `passwd`
 
-### User creation
+#### User creation
 ```
 useradd --create-home chris
 passwd chris
 ```
 
-### Set mirrors
+#### Set mirrors
 Install reflector package: `pacman -S reflector`  
 Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`
 
-### Install extra packages
+#### Install extra packages
 `pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi`  
 
-### Enable sudo for user
+#### Enable sudo for user
 `visudo`  
 Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
 
-### Add user to group 'wheel'
+#### Add user to group 'wheel'
 `gpasswd -a chris wheel`
 
-### Configure netctl
+#### Configure netctl
 Move supplicant file: `mv /var/wpa_supplicant.conf /etc/wpa_supplicant/`  
 Copy wpa configuration: `cp /etc/netctl/examples/wireless-wpa /etc/netctl/`  
 Edit the copied file and change/add the following:  
@@ -160,7 +160,7 @@ network={
 
 Enable wireless connection at boot: `netctl enable wireless-wpa`
 
-### Configure GRUB bootloader
+#### Configure GRUB bootloader
 Retrieve necessary packages: `pacman -S grub efibootmgr`  
 Install grub EFI: `grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch`  
 
@@ -170,7 +170,7 @@ Add **acpi_backlight=none  amdgpu.dc=0** to variable GRUB_CMDLINE_LINUX_DEFAULT 
 
 Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
 
-#### Reboot
+### Reboot
 Exit chroot: `exit`  
 Manually unmount all the partitions: `umount -R /mnt`  
 `reboot`
