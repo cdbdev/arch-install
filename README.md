@@ -112,7 +112,7 @@ Enter: **myarch** in: _/etc/hostname_
 Enter in: _/etc/hosts_:  
 ```
 127.0.0.1 localhost
-::1 localhost
+::1       localhost
 ```	
 
 ### Root password
