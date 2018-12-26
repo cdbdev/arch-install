@@ -163,5 +163,15 @@ Enable wireless connection at boot: `netctl enable wireless-wpa`
 ### Configure GRUB bootloader
 Retrieve necessary packages: `pacman -S grub efibootmgr`  
 Install grub EFI: `grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch`  
+
+Fix dark screen & hibernate:  
 Edit _'/etc/default/grub'_:  
 Add **acpi_backlight=none  amdgpu.dc=0** to variable GRUB_CMDLINE_LINUX_DEFAULT after _“quiet”_
+
+Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
+
+### Reboot
+Exit chroot: `exit`
+Manually unmount all the partitions: `umount -R /mnt`  
+`reboot`
+
