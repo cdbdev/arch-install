@@ -53,11 +53,11 @@ Create new **root** partition with: `n` followed by:
 - Last Sector **+412G**  
 - Partition Type **8300** (Linux=8300)  
 
-_OPTIONAL: create new **swap partition** with: `n` followed by:
-- Partition number
-- First Sector (previous sector + 1)  
-- Last Sector **+12G**  
-- Partition Type **8200** (Swap=8200)_
+_OPTIONAL: create new **swap partition** with: `n` followed by:_
+- _Partition number_
+- _First Sector (previous sector + 1)_
+- _Last Sector **+12G**_
+- _Partition Type **8200** (Swap=8200)_
 
 Save changes: `w`  
 Quit: `q`
