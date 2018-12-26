@@ -66,7 +66,7 @@ Quit: `q`
 Format **root** partition with **ext4**: `mkfs.ext4 /dev/sda<root partition>`  
 
 _OPTIONAL: Initialize swap partition_  
-_`mkswap /dev/sda<swap partition>_  
+_`mkswap /dev/sda<swap partition>    
 _swapon /dev/sda<swap partition>`_
 
 ### Mount the file systems
