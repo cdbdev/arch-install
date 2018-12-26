@@ -84,25 +84,27 @@ Use the pacstrap script to install the base package group: `pacstrap /mnt base`
 ## Configure the system
 Copy _'wpa_supplicant'_ file to **/mnt/var** for reuse in base system: `cp wpa_supplicant.conf /mnt/var`  
 
+### Fstab
 Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
 
+### Chroot
 Change root into the new system: `arch-chroot /mnt`  
 
 Disable beep: `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
 
-Set time zone:  
+### Time zone
   `ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
   `hwclock --systohc`  
   
-Localization:  
+### Localization
 Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
 Generate: `locale-gen`  
 Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_  
 Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
 
-Network configuration:  
+### Network configuration
 Enter: **myarch** in: _/etc/hostname_  
 Enter in: _/etc/hosts_:  
-	**127.0.0.1		localhost**
-	**::1			localhost	**
+	**127.0.0.1		localhost**  
+	**::1			localhost**  
 
