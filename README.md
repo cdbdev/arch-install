@@ -42,4 +42,6 @@ Check connection: `ping www.google.be`
 Because I have a _'GUID Partition Table (GPT)'_, I'll be using **gdisk**.  
 
 Start gdisk: `gdisk /dev/sda`  
-Remove **root** partition: d
+Display partition summary data with: `p`.  
+Remove existing **root** partition with command: `d` followed by partition number.
+_OPTIONAL remove existing **swap** partition with command `d` followed by partition number._
