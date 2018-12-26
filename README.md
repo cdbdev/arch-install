@@ -147,3 +147,13 @@ Interface=wlp1s0
 Security=wpa-config  
 WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
 ```
+Add 'ctrl_interface=/var/run/wpa_supplicant' to 'wpa_supplicant.conf' (on 1st line):  
+```
+ctrl_interface=/var/run/wpa_supplicant 
+network={
+	ssid=”MYSSID”
+	#psk=”passphrase”
+	psk=???
+}   
+
+```
