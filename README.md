@@ -104,11 +104,17 @@ Change root into the new system: `arch-chroot /mnt`
 #### Localization
 Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
 Generate locale: `locale-gen`  
-Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_  
-Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
+
+Enter in : _/etc/locale.conf_:  
+`LANG=en_US.UTF-8`
+
+Enter in : _/etc/vconsole.conf_:  
+`KEYMAP=be-latin1`
 
 #### Network configuration
-Enter: **myarch** in: _/etc/hostname_  
+Enter in: _/etc/hostname_:  
+`myarch`
+
 Enter in: _/etc/hosts_:  
 ```
 127.0.0.1 localhost
@@ -166,8 +172,8 @@ Retrieve necessary packages: `pacman -S grub efibootmgr`
 Install grub EFI: `grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch`  
 
 Fix dark screen & hibernate:  
-Edit _'/etc/default/grub'_:  
-Add **acpi_backlight=none  amdgpu.dc=0** to variable GRUB_CMDLINE_LINUX_DEFAULT after _“quiet”_
+Edit _'/etc/default/grub'_ and add the following to variable GRUB_CMDLINE_LINUX_DEFAULT after _“quiet”_:  
+`acpi_backlight=none  amdgpu.dc=0`
 
 Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
 
