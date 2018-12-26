@@ -99,7 +99,7 @@ Change root into the new system: `arch-chroot /mnt`
   
 ### Localization
 Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
-Generate: `locale-gen`  
+Generate locale: `locale-gen`  
 Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_  
 Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
 
@@ -134,7 +134,7 @@ Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
 Move supplicant file: `mv /var/wpa_supplicant.conf /etc/wpa_supplicant/`  
 Copy wpa configuration: `cp /etc/netctl/examples/wireless-wpa /etc/netctl/`  
 Edit the copied file and change/add the following:  
-**Interface=wlp1s0**  
-**Security=wpa-config**  
-**WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'**  
+    **Interface=wlp1s0**  
+    **Security=wpa-config**  
+    **WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'**  
 
