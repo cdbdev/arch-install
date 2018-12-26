@@ -129,3 +129,8 @@ Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
 
 ### Add user to group 'wheel'
 `gpasswd -a chris wheel`
+
+### Configure netctl
+Move supplicant file: `mv /var/wpa_supplicant.conf /etc/wpa_supplicant/`  
+Copy wpa configuration: `cp /etc/netctl/examples/wireless-wpa /etc/netctl/`  
+Edit the copied file and change/add the following:  
