@@ -63,3 +63,7 @@ Save changes: `w`
 Quit: `q`
 
 ### Format the partitions
+Format **root** partition with **ext4**: `mkfs.ext4 /dev/sda<root partition>`  
+_OPTIONAL: Initialize swap partition_  
+_`mkswap /dev/sda<swap partition>`_
+_`swapon /dev/sda<swap partition>`_
