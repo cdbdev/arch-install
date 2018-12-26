@@ -43,5 +43,8 @@ Because I have a _'GUID Partition Table (GPT)'_, I'll be using **gdisk**.
 
 Start gdisk: `gdisk /dev/sda`  
 Display partition summary data with: `p`.  
-Remove existing **root** partition with command: `d` followed by partition number.  
+
+Remove existing **root** partition with: `d` followed by partition number.  
 _OPTIONAL remove existing **swap** partition with command `d` followed by partition number._
+
+Create new **root** partition with: `n`
