@@ -142,7 +142,8 @@ Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
 Move supplicant file: `mv /var/wpa_supplicant.conf /etc/wpa_supplicant/`  
 Copy wpa configuration: `cp /etc/netctl/examples/wireless-wpa /etc/netctl/`  
 Edit the copied file and change/add the following:  
-    **Interface=wlp1s0**  
-    **Security=wpa-config**  
-    **WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'**  
-
+```
+Interface=wlp1s0  
+Security=wpa-config  
+WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
+```
