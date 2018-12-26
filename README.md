@@ -25,8 +25,9 @@ Press ‘Enter’.
 
 ## Pre-installation
 ### Set the keyboard layout
-`loadkeys be-latin1`  
+Enable 'AZERTY' layout: `loadkeys be-latin1`  
 
 ### Connect to the Internet
-`ip link set wlp1s0 up`  
-`wpa_passphrase "SSID" "mykey" > wpa_supplicant.conf`  
+Disable soft block: `rfkill unblock all`  
+Enable network interface: `ip link set wlp1s0 up`  
+Generate passphrase: `wpa_passphrase "SSID" "mykey" > wpa_supplicant.conf`  
