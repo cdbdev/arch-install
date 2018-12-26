@@ -22,3 +22,8 @@ Insert USB and start the system. Once you see some activity on the screen, press
 Select _'Arch Linux archiso x86_64 UEFI CD'_ and press `e`.  
 Add the following to the end of the line: `acpi_backlight=none  amdgpu.dc=0`.  
 Press ‘Enter’.
+
+## Pre-installation
+### Set the keyboard layout
+`loadkeys be-latin1`  
+
