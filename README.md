@@ -120,6 +120,12 @@ Enter in: _/etc/hosts_:
 Install reflector package: `pacman -S reflector`  
 Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`
 
-## Install extra packages
-`pacman -S pacman-contrib sudo ufw wpa_supplicant vim`  
+### Install extra packages
+`pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi`  
 
+### Enable sudo for user
+`visudo`  
+Enter the following after _'root ALL=(ALL) ALL'_: **chris ALL=(ALL) ALL**
+
+### Add user to group 'wheel'
+`gpasswd -a chris wheel`
