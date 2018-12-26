@@ -27,3 +27,6 @@ Press ‘Enter’.
 ### Set the keyboard layout
 `loadkeys be-latin1`  
 
+### Connect to the Internet
+`ip link set wlp1s0 up`  
+`wpa_passphrase "SSID" "mykey" > wpa_supplicant.conf`  
