@@ -35,8 +35,10 @@ Connect to the WIFI: `wpa_supplicant -B -i wlp1s0 -c wpa_supplicant.conf`
 Enable DHCP on the interface: `dhcpcd wlp1s0`  
 Check connection: `ping www.google.be`  
 
-## Update the system clock
+### Update the system clock
 `timedatectl set-ntp true`  
 
-## Partition the disks
+### Partition the disks
+Because I have a _'GUID Partition Table (GPT)'_, I'll use **gdisk**.  
+Open gdisk: `gdisk /dev/sda`  
 
