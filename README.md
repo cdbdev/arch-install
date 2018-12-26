@@ -95,7 +95,9 @@ Set time zone:
   `hwclock --systohc`  
   
 Localization:  
-Uncomment _'en_US.UTF-8 UTF-8'_ in : **/etc/locale.gen**  
-Generate: locale-gen  
-Enter: 'LANG=en_US.UTF-8' in : **/etc/locale.conf**
+Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
+Generate: `locale-gen`  
+Enter: **LANG=en_US.UTF-8** in : _/etc/locale.conf_  
+Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_  
 
+Network configuration:
