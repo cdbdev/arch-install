@@ -147,7 +147,7 @@ Interface=wlp1s0
 Security=wpa-config  
 WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
 ```
-Add 'ctrl_interface=/var/run/wpa_supplicant' to 'wpa_supplicant.conf' (on 1st line):  
+Add **ctrl_interface=/var/run/wpa_supplicant** to _'wpa_supplicant.conf'_ (on 1st line):  
 ```
 ctrl_interface=/var/run/wpa_supplicant 
 network={
@@ -157,3 +157,11 @@ network={
 }   
 
 ```
+
+Enable wireless connection at boot: `netctl enable wireless-wpa`
+
+### Configure GRUB bootloader
+Retrieve necessary packages: `pacman -S grub efibootmgr`  
+Install grub EFI: `grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch`  
+Edit _'/etc/default/grub'_:  
+Add **acpi_backlight=none  amdgpu.dc=0** to variable GRUB_CMDLINE_LINUX_DEFAULT after _“quiet”_
