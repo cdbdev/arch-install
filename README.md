@@ -11,8 +11,7 @@ Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (D
 
 In **Windows**:
 
-Using Rufus from https://rufus.akeo.ie/. 
-
+Using Rufus from https://rufus.akeo.ie/.  
 Simply select the Arch Linux ISO, the USB drive you want to create the bootable Arch Linux onto and click start. 
 
 **_Note_**: _Be sure to select DD image mode from the dropdown menu or when the program asks which mode to use (ISO or DD), otherwise the image will be transferred incorrectly._
