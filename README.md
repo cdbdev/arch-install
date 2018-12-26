@@ -45,10 +45,21 @@ Start gdisk: `gdisk /dev/sda`
 Display partition summary data with: `p`.  
 
 Remove existing **root** partition with: `d` followed by partition number.  
-_OPTIONAL remove existing **swap** partition with command `d` followed by partition number._
+_OPTIONAL: remove existing **swap** partition with command `d` followed by partition number._
 
 Create new **root** partition with: `n` followed by:  
 - Partition number  
 - First Sector (previous sector + 1)  
 - Last Sector **+412G**  
 - Partition Type **8300** (Linux=8300)  
+
+_OPTIONAL: create new **swap partition** with: `n` followed by:
+- Partition number
+- First Sector (previous sector + 1)  
+- Last Sector **+12G**  
+- Partition Type **8200** (Swap=8200)_
+
+Save changes: `w`  
+Quit: `q`
+
+### Format the partitions
