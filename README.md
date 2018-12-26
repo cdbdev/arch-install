@@ -96,8 +96,10 @@ Change root into the new system: `arch-chroot /mnt`
 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
 
 ### Time zone
-  `ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime`  
-  `hwclock --systohc`  
+  ```
+  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
+  hwclock --systohc
+  ```
   
 ### Localization
 Uncomment **'en_US.UTF-8 UTF-8'** in : _/etc/locale.gen_  
@@ -108,15 +110,19 @@ Enter: **KEYMAP=be-latin1** in : _/etc/vconsole.conf_
 ### Network configuration
 Enter: **myarch** in: _/etc/hostname_  
 Enter in: _/etc/hosts_:  
+	```
 	**127.0.0.1		localhost**  
 	**::1			localhost**  
+	```	
 
 ### Root password
 `passwd`
 
 ### User creation
-`useradd --create-home chris`  
-`passwd chris`  
+```
+useradd --create-home chris
+passwd chris
+```
 
 ### Set mirrors
 Install reflector package: `pacman -S reflector`  
