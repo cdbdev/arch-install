@@ -150,14 +150,13 @@ Change root into the new system:
 ```  
 
 #### Time zone
-  ```
-  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
-  hwclock --systohc
-  ```
+```
+#  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
+#  hwclock --systohc
+```
   
 #### Localization
-Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`  
-Generate locale:  
+Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen` and generate with:  
 ```
 #  locale-gen
 ```
@@ -173,14 +172,14 @@ Set keyboard layout:
 ```
 
 #### Network configuration
-Enter in: _/etc/hostname_:  
-`myarch`
-
-Enter in: _/etc/hosts_:  
+Create hostname file:  
 ```
-127.0.0.1 localhost
-::1       localhost
-```	
+#  echo "myarch" > /etc/hostname
+```
+Add matching entries to `hosts`:
+```
+#  echo -e "127.0.0.1\tlocalhost" > /etc/hosts
+#  echo -e "::1\t\tlocalhost" >> /etc/hosts	
 
 #### Root password
 `passwd`
