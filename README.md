@@ -84,7 +84,10 @@ Put server ‘Belgium’ on top in : **/etc/pacman.d/mirrorlist**.
 Use the pacstrap script to install the base package group: `pacstrap /mnt base`  
 
 ## Configure the system
-Copy _'wpa_supplicant'_ file to **/mnt/var** for reuse in base system: `cp wpa_supplicant.conf /mnt/var`  
+Copy `wpa_supplicant` file to `/mnt/var` for reuse in base system:   
+`
+#  cp wpa_supplicant.conf /mnt/var
+`  
 
 ### Fstab
 Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
