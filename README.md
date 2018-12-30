@@ -98,8 +98,8 @@ Format **root** partition with **ext4**:
 
 _OPTIONAL: Initialize swap partition_  
 ```
-mkswap /dev/sda<swap partition>
-swapon /dev/sda<swap partition>
+#  mkswap /dev/sda<swap partition>
+#  swapon /dev/sda<swap partition>
 ```
 
 ### Mount the file systems
@@ -107,15 +107,24 @@ Mount the file system on the root partition to /mnt:
 ```
 #  mount /dev/sda<root partition> /mnt
 ```  
-Create EFI mount directory: `mkdir /mnt/efi`  
-Mount EFI: `mount /dev/sda<efi partition> /mnt/efi`  
+Create EFI mount directory:  
+```
+#  mkdir /mnt/efi
+```  
+Mount EFI:  
+```
+#  mount /dev/sda<efi partition> /mnt/efi
+```  
 
 ## Installation
 ### Select the mirrors
-Put server ‘Belgium’ on top in : **/etc/pacman.d/mirrorlist**.  
+Put server ‘Belgium’ on top in : `/etc/pacman.d/mirrorlist`.  
 
 ### Install the base packages
-Use the pacstrap script to install the base package group: `pacstrap /mnt base`  
+Use the pacstrap script to install the base package group:  
+```
+#  pacstrap /mnt base
+```  
 
 ## Configure the system
 Copy `wpa_supplicant` file to `/mnt/var` for reuse in base system:   
@@ -124,13 +133,21 @@ Copy `wpa_supplicant` file to `/mnt/var` for reuse in base system:
 ``` 
 
 ### Fstab
-Generate an fstab file: `genfstab -U /mnt >> /mnt/etc/fstab`  
+Generate an fstab file:  
+```
+#  genfstab -U /mnt >> /mnt/etc/fstab
+```  
 
 ### Chroot
-Change root into the new system: `arch-chroot /mnt`  
+Change root into the new system:  
+```
+#  arch-chroot /mnt
+```  
 
 #### Disable beep 
-`echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`  
+```
+#  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+```  
 
 #### Time zone
   ```
@@ -145,7 +162,7 @@ Generate locale:
 #  locale-gen
 ```
 
-Enter in : _/etc/locale.conf_:  
+Enter in `/etc/locale.conf`:  
 `LANG=en_US.UTF-8`
 
 Enter in : _/etc/vconsole.conf_:  
