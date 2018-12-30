@@ -106,7 +106,7 @@ Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`
 Generate locale:  
 `
 # locale-gen
-`  
+`
 
 Enter in : _/etc/locale.conf_:  
 `LANG=en_US.UTF-8`
