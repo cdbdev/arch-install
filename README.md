@@ -59,12 +59,17 @@ Check connection:
 ```  
 
 ### Update the system clock
-`timedatectl set-ntp true`  
+```
+#  timedatectl set-ntp true
+```  
 
 ### Partition the disks
-Because I have a _'GUID Partition Table (GPT)'_, I'll be using **gdisk**.  
+Partitioning _'GUID Partition Table (GPT)'_ using **gdisk**.  
 
-Start gdisk: `gdisk /dev/sda`  
+Start gdisk:  
+```
+#  gdisk /dev/sda
+```  
 Display partition summary data with: `p`.  
 
 Remove existing **root** partition with: `d` followed by partition number.  
