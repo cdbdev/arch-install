@@ -28,7 +28,9 @@ Press ‘Enter’.
 ## Pre-installation
 ### Set the keyboard layout
 Enable 'AZERTY' layout: 
-```loadkeys be-latin1```  
+```
+#  loadkeys be-latin1
+```  
 
 ### Connect to the Internet
 Disable soft block: `rfkill unblock all`  
