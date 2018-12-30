@@ -162,11 +162,15 @@ Generate locale:
 #  locale-gen
 ```
 
-Enter in `/etc/locale.conf`:  
-`LANG=en_US.UTF-8`
+Set the **LANG** variable:  
+```
+#  echo "LANG=en_US.UTF-8" > /etc/locale.conf
+```
 
-Enter in : _/etc/vconsole.conf_:  
-`KEYMAP=be-latin1`
+Set keyboard layout:
+```
+#  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
+```
 
 #### Network configuration
 Enter in: _/etc/hostname_:  
