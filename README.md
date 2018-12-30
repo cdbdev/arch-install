@@ -21,9 +21,9 @@ Simply select the Arch Linux ISO, the USB drive you want to create the bootable 
 ## Boot the live environment
 Insert USB and start the system. Once you see some activity on the screen, press F12 a couple of times to make sure you enter the BOOT options screen. Then select the USB drive (USB HDD).
 
-Select _'Arch Linux archiso x86_64 UEFI CD'_ and press `e`.  
+Select **Arch Linux archiso x86_64 UEFI CD** and press `e`.  
 Add the following to the end of the line: `acpi_backlight=none  amdgpu.dc=0`.  
-Press ‘Enter’.
+Press **Enter**.
 
 ## Pre-installation
 ### Set the keyboard layout
