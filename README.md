@@ -179,15 +179,16 @@ Create hostname file:
 Add matching entries to `hosts`:
 ```
 #  echo -e "127.0.0.1\tlocalhost" > /etc/hosts
-#  echo -e "::1\t\tlocalhost" >> /etc/hosts	
+#  echo -e "::1\t\tlocalhost" >> /etc/hosts 	
+```
 
 #### Root password
-`passwd`
+`#  passwd`
 
 #### User creation
 ```
-useradd --create-home chris
-passwd chris
+#  useradd --create-home chris
+#  passwd chris
 ```
 
 #### Set mirrors
