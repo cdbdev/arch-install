@@ -91,7 +91,10 @@ Save changes: `w`
 Quit: `q`
 
 ### Format the partitions
-Format **root** partition with **ext4**: `mkfs.ext4 /dev/sda<root partition>`  
+Format **root** partition with **ext4**:  
+```
+#  mkfs.ext4 /dev/sda<root partition>
+```  
 
 _OPTIONAL: Initialize swap partition_  
 ```
@@ -100,7 +103,10 @@ swapon /dev/sda<swap partition>
 ```
 
 ### Mount the file systems
-Mount the file system on the root partition to /mnt: `mount /dev/sda<root partition> /mnt`  
+Mount the file system on the root partition to /mnt:  
+```
+#  mount /dev/sda<root partition> /mnt
+```  
 Create EFI mount directory: `mkdir /mnt/efi`  
 Mount EFI: `mount /dev/sda<efi partition> /mnt/efi`  
 
