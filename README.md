@@ -102,7 +102,7 @@ Change root into the new system: `arch-chroot /mnt`
   ```
   
 #### Localization
-Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`  
+Uncomment **en_US.UTF-8 UTF-8** in **/etc/locale.gen**  
 Generate locale:  
 ```
 locale-gen
