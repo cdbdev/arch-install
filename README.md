@@ -33,12 +33,30 @@ Enable 'AZERTY' layout:
 ```  
 
 ### Connect to the Internet
-Disable soft block: `rfkill unblock all`  
-Enable network interface: `ip link set wlp1s0 up`  
-Generate passphrase: `wpa_passphrase "SSID" "mykey" > wpa_supplicant.conf`  
-Connect to the WIFI: `wpa_supplicant -B -i wlp1s0 -c wpa_supplicant.conf`  
-Enable DHCP on the interface: `dhcpcd wlp1s0`  
-Check connection: `ping www.google.be`  
+Disable soft block:  
+```
+#  rfkill unblock all
+```  
+Enable network interface:  
+```
+#  ip link set wlp1s0 up
+```  
+Generate passphrase:  
+```
+#  wpa_passphrase "SSID" "mykey" > wpa_supplicant.conf
+```  
+Connect to the WIFI:  
+```
+wpa_supplicant -B -i wlp1s0 -c wpa_supplicant.conf
+```  
+Enable DHCP on the interface:  
+```
+#  dhcpcd wlp1s0
+```  
+Check connection:  
+```
+#  ping www.google.be
+```  
 
 ### Update the system clock
 `timedatectl set-ntp true`  
