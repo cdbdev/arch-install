@@ -237,7 +237,7 @@ Security=wpa-config
 WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
 ```
 
-Add **ctrl_interface=/var/run/wpa_supplicant** to `wpa_supplicant.conf` (on 1st line):  
+Add `ctrl_interface=/var/run/wpa_supplicant` to `wpa_supplicant.conf` (on 1st line):  
 ```
 ctrl_interface=/var/run/wpa_supplicant 
 network={
@@ -264,7 +264,7 @@ Install grub EFI:
 ```  
 
 Fix dark screen & hibernate:  
-Edit `/etc/default/grub` and change the variable **GRUB_CMDLINE_LINUX_DEFAULT** to:  
+Edit `/etc/default/grub` and change the variable `GRUB_CMDLINE_LINUX_DEFAULT` to:  
 ```
 "quiet acpi_backlight=none  amdgpu.dc=0"
 ```
