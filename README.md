@@ -206,12 +206,12 @@ Retrieve latest mirror list:
 
 #### Enable sudo for user
 ```
-#  visudo`  
+#  visudo  
 ```
 
 Enter the following after **root ALL=(ALL) ALL**:  
 ```
-chris ALL=(ALL) ALL`
+chris ALL=(ALL) ALL
 ```
 
 #### Add user to group 'wheel'
