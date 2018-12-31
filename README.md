@@ -47,7 +47,7 @@ Generate passphrase:
 ```  
 Connect to the WIFI:  
 ```
-wpa_supplicant -B -i wlp1s0 -c wpa_supplicant.conf
+#  wpa_supplicant -B -i wlp1s0 -c wpa_supplicant.conf
 ```  
 Enable DHCP on the interface:  
 ```
