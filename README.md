@@ -282,12 +282,12 @@ Generate config file:
 #  pacman -S xfce4 xfce4-goodies
 ```
 
-Install Display Manager:  
+Install Display Manager (LightDM):  
 ```
 #  pacman -S lightdm lightdm-gtk-greeter
 ```
 
-Change Lightdm configuration to **gtk greeter**:
+Change Lightdm session to use `lightdm-gtk-greeter` under section **Seat**:
 ```
 [Seat:*]
 ...
