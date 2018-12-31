@@ -27,7 +27,7 @@ Press **Enter**.
 
 ## Pre-installation
 ### Set the keyboard layout
-Enable 'AZERTY' layout: 
+Enable `AZERTY` layout: 
 ```
 #  loadkeys be-latin1
 ```  
@@ -64,7 +64,7 @@ Check connection:
 ```  
 
 ### Partition the disks
-Partitioning _'GUID Partition Table (GPT)'_ using **gdisk**.  
+Partitioning _'GUID Partition Table (GPT)'_ using `gdisk`.  
 
 Start gdisk:  
 ```
@@ -91,7 +91,7 @@ Save changes: `w`
 Quit: `q`
 
 ### Format the partitions
-Format **root** partition with **ext4**:  
+Format `root` partition with `ext4`:  
 ```
 #  mkfs.ext4 /dev/sda<root partition>
 ```  
@@ -103,7 +103,7 @@ _OPTIONAL: Initialize swap partition_
 ```
 
 ### Mount the file systems
-Mount the file system on the root partition to /mnt:  
+Mount the file system on the `root` partition to `/mnt`:   
 ```
 #  mount /dev/sda<root partition> /mnt
 ```  
@@ -121,7 +121,7 @@ Mount EFI:
 Put server ‘Belgium’ on top in : `/etc/pacman.d/mirrorlist`.  
 
 ### Install the base packages
-Use the pacstrap script to install the base package group:  
+Use the pacstrap script to install the `base` package group:  
 ```
 #  pacstrap /mnt base
 ```  
@@ -133,7 +133,7 @@ Copy `wpa_supplicant` file to `/mnt/var` for reuse in base system:
 ``` 
 
 ### Fstab
-Generate an fstab file:  
+Generate an `fstab` file:  
 ```
 #  genfstab -U /mnt >> /mnt/etc/fstab
 ```  
@@ -161,7 +161,7 @@ Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen` and generate with:
 #  locale-gen
 ```
 
-Set the **LANG** variable:  
+Set the `LANG` variable:  
 ```
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
@@ -211,7 +211,7 @@ Retrieve latest mirror list:
 #  visudo  
 ```
 
-Enter the following after **root ALL=(ALL) ALL**:  
+Enter the following after `root ALL=(ALL) ALL`:  
 ```
 chris ALL=(ALL) ALL
 ```
@@ -295,7 +295,7 @@ greeter-session=lightdm-gtk-greeter
 ...
 ```
 
-Enable **lightdm** service:  
+Enable `lightdm` service:  
 ```
 #  systemctl enable lightdm.service
 ```
