@@ -192,8 +192,14 @@ Add matching entries to `hosts`:
 ```
 
 #### Set mirrors
-Install reflector package: `pacman -S reflector`  
-Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist`
+Install reflector package: 
+```
+#  pacman -S reflector
+```  
+Retrieve latest mirror list: 
+```
+#  reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+```
 
 #### Install extra packages
 `pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi`  
