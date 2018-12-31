@@ -202,7 +202,7 @@ Retrieve latest mirror list:
 ```
 
 #### Install extra packages
-`pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi`  
+`pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi screenfetch`  
 
 #### Enable sudo for user
 ```
