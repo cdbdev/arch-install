@@ -268,7 +268,7 @@ Install grub EFI:
 Fix dark screen & hibernate:  
 Edit `/etc/default/grub` and change the variable `GRUB_CMDLINE_LINUX_DEFAULT` to:  
 ```
-"quiet acpi_backlight=none  amdgpu.dc=0"
+"quiet acpi_backlight=none amdgpu.dc=0"
 ```
 
 Generate config file: 
