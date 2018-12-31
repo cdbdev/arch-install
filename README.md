@@ -276,6 +276,50 @@ Generate config file:
 #  grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+#### Install and prepare XFCE Desktop Environment
+```
+#  pacman -S xorg-server
+#  pacman -S xfce4 xfce4-goodies
+```
+
+Install extra packages:  
+```
+#  pacman -S ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
+```
+
+Install Display Manager:  
+```
+#  pacman -S lightdm lightdm-gtk-greeter
+```
+
+Change Lightdm configuration to **gtk greeter**:
+```
+[Seat:*]
+...
+greeter-session=lightdm-gtk-greeter
+...
+```
+
+Enable **lightdm** service:  
+```
+#  systemctl enable lightdm.service
+```
+
+Set keyboard layout at login in file `/etc/X11/xorg.conf.d/20-keyboard.conf`:  
+```
+Section "InputClass"
+	Identifier "keyboard"
+	MatchIsKeyboard "yes"
+	Option "XkbLayout" "be"
+	Option "XkbVariant" "nodeadkeys"
+EndSection
+```
+
+Enable auto-mount for usb:  
+```
+#  pacman -S gvfs
+```
+
 ## Reboot
 Exit chroot with `exit`  
 Manually unmount all the partitions: 
