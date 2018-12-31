@@ -282,11 +282,6 @@ Generate config file:
 #  pacman -S xfce4 xfce4-goodies
 ```
 
-Install extra packages:  
-```
-#  pacman -S ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
-```
-
 Install Display Manager:  
 ```
 #  pacman -S lightdm lightdm-gtk-greeter
@@ -318,6 +313,11 @@ EndSection
 Enable auto-mount for usb:  
 ```
 #  pacman -S gvfs
+```
+
+Install some extra packages:  
+```
+#  pacman -S ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
 ```
 
 ## Reboot
