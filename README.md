@@ -327,3 +327,6 @@ Manually unmount all the partitions:
 #  umount -R /mnt    
 #  reboot
 ```
+
+## Post installation
+TODO...
