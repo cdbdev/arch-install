@@ -199,23 +199,39 @@ Retrieve latest mirror list: `reflector --verbose --latest 5 --sort rate --save 
 `pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi`  
 
 #### Enable sudo for user
-`visudo`  
-Enter the following after _'root ALL=(ALL) ALL'_:  
-`chris ALL=(ALL) ALL`
+```
+#  visudo`  
+```
+
+Enter the following after **root ALL=(ALL) ALL**:  
+```
+chris ALL=(ALL) ALL`
+```
 
 #### Add user to group 'wheel'
-`gpasswd -a chris wheel`
+```
+#  gpasswd -a chris wheel
+```
 
 #### Configure netctl
-Move supplicant file: `mv /var/wpa_supplicant.conf /etc/wpa_supplicant/`  
-Copy wpa configuration: `cp /etc/netctl/examples/wireless-wpa /etc/netctl/`  
+Move supplicant file:  
+```
+#  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
+```  
+
+Copy wpa configuration: 
+```
+#  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
+```  
+
 Edit the copied file and change/add the following:  
 ```
 Interface=wlp1s0  
 Security=wpa-config  
 WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
 ```
-Add **ctrl_interface=/var/run/wpa_supplicant** to _'wpa_supplicant.conf'_ (on 1st line):  
+
+Add **ctrl_interface=/var/run/wpa_supplicant** to `wpa_supplicant.conf` (on 1st line):  
 ```
 ctrl_interface=/var/run/wpa_supplicant 
 network={
@@ -226,20 +242,36 @@ network={
 
 ```
 
-Enable wireless connection at boot: `netctl enable wireless-wpa`
+Enable wireless connection at boot: 
+```
+#  netctl enable wireless-wpa
+```
 
 #### Configure GRUB bootloader
-Retrieve necessary packages: `pacman -S grub efibootmgr`  
-Install grub EFI: `grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch`  
+Retrieve necessary packages: 
+```
+#  pacman -S grub efibootmgr
+```  
+Install grub EFI: 
+```
+#  grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch
+```  
 
 Fix dark screen & hibernate:  
-Edit _'/etc/default/grub'_ and add the following to variable GRUB_CMDLINE_LINUX_DEFAULT after _“quiet”_:  
-`acpi_backlight=none  amdgpu.dc=0`
+Edit `/etc/default/grub` and change the variable **GRUB_CMDLINE_LINUX_DEFAULT** to:  
+```
+"quiet acpi_backlight=none  amdgpu.dc=0"
+```
 
-Generate config file: `grub-mkconfig -o /boot/grub/grub.cfg`
+Generate config file: 
+```
+#  grub-mkconfig -o /boot/grub/grub.cfg
+```
 
 ## Reboot
-Exit chroot: `exit`  
-Manually unmount all the partitions: `umount -R /mnt`  
-`reboot`
-
+Exit chroot with `exit`  
+Manually unmount all the partitions: 
+```
+#  umount -R /mnt    
+#  reboot
+```
