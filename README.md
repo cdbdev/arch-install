@@ -369,6 +369,16 @@ polkit.addRule(function(action, subject) {
 });
 ```
 
+### Dual boot Windows
+```
+#  mkdir /mnt/windows
+#  mount /dev/sda<other os partition number> /mnt/windows
+#  pacman -S os-prober
+#  os-prober
+#  grub-mkconfig -o /boot/grub/grub.cfg
+#  umount /mnt/windows
+```
+
 ## Troubleshooting
 **wpa_passphrase**:  
 Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
