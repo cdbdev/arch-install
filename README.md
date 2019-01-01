@@ -375,7 +375,7 @@ $  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
 $  sudo mount /dev/sda<other os partition number> /mnt/windows
 $  sudo pacman -S os-prober
-$  os-prober
+$  sudo os-prober
 $  sudo grub-mkconfig -o /boot/grub/grub.cfg
 $  sudo umount /mnt/windows
 ```
