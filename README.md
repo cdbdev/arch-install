@@ -329,6 +329,11 @@ Manually unmount all the partitions:
 ```
 
 ## Post installation (regular user)
+### Cleaning pacman cache (except for the most recent 3) weekly:
+```
+sudo systemctl enable paccache.timer
+```
+
 ### Configure and install screen locker  
 Install `light-locker` and necessary packages:
 ```
