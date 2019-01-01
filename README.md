@@ -329,7 +329,8 @@ Manually unmount all the partitions:
 ```
 
 ## Post installation (regular user)
-### Configure and install screen locker `light-locker`:  
+### Configure and install screen locker  
+Install `light-locker` and necessary packages:
 ```
 $  sudo pacman -S light-locker xfce4-power-manager
 $  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
