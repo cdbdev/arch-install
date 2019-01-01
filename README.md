@@ -353,7 +353,7 @@ $  sudo pacman -S blueman
 $  sudo systemctl enable bluetooth
 ```
 
-Autostart blueman for users in `wheel` group in `90-blueman.rules`:
+Autostart blueman for users in `wheel` group in file `90-blueman.rules`:
 ```
 /* Allow users in wheel group to use blueman feature requiring root without authentication */
 polkit.addRule(function(action, subject) {
