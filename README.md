@@ -371,12 +371,12 @@ polkit.addRule(function(action, subject) {
 
 ### Dual boot Windows
 ```
-#  mkdir /mnt/windows
-#  mount /dev/sda<other os partition number> /mnt/windows
-#  pacman -S os-prober
-#  os-prober
-#  grub-mkconfig -o /boot/grub/grub.cfg
-#  umount /mnt/windows
+$  sudo mkdir /mnt/windows
+$  sudo mount /dev/sda<other os partition number> /mnt/windows
+$  sudo pacman -S os-prober
+$  os-prober
+$  sudo grub-mkconfig -o /boot/grub/grub.cfg
+$  sudo umount /mnt/windows
 ```
 
 ## Troubleshooting
