@@ -371,6 +371,7 @@ polkit.addRule(function(action, subject) {
 
 ### Dual boot Windows
 ```
+$  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
 $  sudo mount /dev/sda<other os partition number> /mnt/windows
 $  sudo pacman -S os-prober
