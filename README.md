@@ -381,17 +381,17 @@ $  sudo umount /mnt/windows
 ```
 
 ## Troubleshooting
-**wpa_passphrase**:  
+_**wpa_passphrase**_:  
 Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
 In case of errors, run `wpa_supplicant` without `-B` option.
 
-**Error could not set interface 'p2p ...' up**:  
+_**Error could not set interface 'p2p ...' up**_:  
 ```
 #  killall wpa_supplicant dhcpcd
 #  wpa_supplicant -B -i wlp1s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-**No grub menu at boot**:  
+_**No grub menu at boot**_:  
 Enter the following commands (considering '4' is the correct partition number of root installation):  
 ```
 #  grub rescue> set prefix=(hd0,4)/boot/grub
@@ -401,13 +401,13 @@ Enter the following commands (considering '4' is the correct partition number of
 
 Reinstall grub when booted in Arch.
 
-**No wireless with netctl**:  
+_**No wireless with netctl**_:  
 ```
 #  rfkill unblock all
 #  reboot
 ```
 
-**Screen too dark**:  
+_**Screen too dark**_:  
 ```
 #  cd /sys/class/backlight/amdgpu_bl0
 #  tee brightness <<< 150
