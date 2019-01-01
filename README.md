@@ -331,7 +331,7 @@ Manually unmount all the partitions:
 ## Post installation (regular user)
 ### Cleaning pacman cache (except for the most recent 3) weekly:
 ```
-sudo systemctl enable paccache.timer
+$  sudo systemctl enable paccache.timer
 ```
 
 ### Configure and install screen locker  
@@ -390,7 +390,7 @@ _**wpa_passphrase**_:
 Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
 In case of errors, run `wpa_supplicant` without `-B` option.
 
-_**Error could not set interface 'p2p ...' up**_:  
+_**Error: could not set interface 'p2p ...' up**_:  
 ```
 #  killall wpa_supplicant dhcpcd
 #  wpa_supplicant -B -i wlp1s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
