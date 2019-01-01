@@ -334,3 +334,16 @@ Configure and install screen locker `light-locker`:
 $  sudo pacman -S light-locker xfce4-power-manager
 $  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
 ```
+
+Enable `light-locker-command -l` in `/usr/bin/xflock4`:
+```
+# Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
+for lock_cmd in \
+    "light-locker-command -l" \
+    "xscreensaver-command -lock" \
+    "gnome-screensaver-command --lock"
+do
+    $lock_cmd >/dev/null 2>&1 && exit
+done
+
+```
