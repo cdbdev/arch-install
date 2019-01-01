@@ -329,7 +329,7 @@ Manually unmount all the partitions:
 ```
 
 ## Post installation (regular user)
-Configure and install screen locker `light-locker`:  
+### Configure and install screen locker `light-locker`:  
 ```
 $  sudo pacman -S light-locker xfce4-power-manager
 $  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
@@ -345,5 +345,25 @@ for lock_cmd in \
 do
     $lock_cmd >/dev/null 2>&1 && exit
 done
+```
 
+### Configure and install bluetooth
+```
+$  sudo pacman -S blueman
+$  sudo systemctl enable bluetooth
+```
+
+Autostart blueman for users in wheel group in `90-blueman.rules`:
+```
+/* Allow users in wheel group to use blueman feature requiring root without authentication */
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.network.setup" ||
+         action.id == "org.blueman.dhcp.client" ||
+         action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.pppd.pppconnect") &&
+        subject.isInGroup("wheel")) {
+
+        return polkit.Result.YES;
+    }
+});
 ```
