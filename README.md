@@ -370,17 +370,17 @@ polkit.addRule(function(action, subject) {
 ```
 
 ## Troubleshooting
-`wpa_passphrase`:  
+**wpa_passphrase**:  
 Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
 In case of errors, run `wpa_supplicant` without `-B` option.
 
-Error `could not set interface 'p2p ...' up`:  
+**Error could not set interface 'p2p ...' up**:  
 ```
 #  killall wpa_supplicant dhcpcd
 #  wpa_supplicant -B -i wlp1s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-No `grub` menu at boot:  
+**No grub menu at boot**:  
 Enter the following commands (considering '4' is the correct partition number of root installation):  
 ```
 #  grub rescue> set prefix=(hd0,4)/boot/grub
@@ -389,3 +389,15 @@ Enter the following commands (considering '4' is the correct partition number of
 ```
 
 Reinstall grub when booted in Arch.
+
+**No wireless with netctl**:  
+```
+#  rfkill unblock all
+#  reboot
+```
+
+**Screen too dark**:  
+```
+#  cd /sys/class/backlight/amdgpu_bl0
+#  tee brightness <<< 150
+```
