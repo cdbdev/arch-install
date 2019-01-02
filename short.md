@@ -85,3 +85,43 @@ network={
 	psk=???
 }  
 ```
+```
+#  netctl enable wireless-wpa
+#  pacman -S grub efibootmgr
+#  grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch
+```
+Edit `/etc/default/grub` and change the variable `GRUB_CMDLINE_LINUX_DEFAULT` to:
+```
+"quiet acpi_backlight=none amdgpu.dc=0"
+```
+```
+#  grub-mkconfig -o /boot/grub/grub.cfg
+#  pacman -S xorg-server
+#  pacman -S xfce4 xfce4-goodies
+#  pacman -S lightdm lightdm-gtk-greeter
+```
+Change Lightdm session to use lightdm-gtk-greeter under section Seat:  
+```
+[Seat:*]
+...
+greeter-session=lightdm-gtk-greeter
+...
+```
+```
+#  systemctl enable lightdm.service
+```
+Set keyboard layout at login in file /etc/X11/xorg.conf.d/20-keyboard.conf:  
+```
+Section "InputClass"
+	Identifier "keyboard"
+	MatchIsKeyboard "yes"
+	Option "XkbLayout" "be"
+	Option "XkbVariant" "nodeadkeys"
+EndSection
+```
+```
+#  pacman -S gvfs
+#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
+```
+
+## Post installation
