@@ -6,4 +6,7 @@ Add the following to the end of the line: `acpi_backlight=none  amdgpu.dc=0`.
 Press **Enter**.
 
 ## Prepare installation
-
+```
+#  loadkeys be-latin1
+#  rfkill unblock all
+```
