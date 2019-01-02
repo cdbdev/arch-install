@@ -9,4 +9,5 @@ Press **Enter**.
 ```
 #  loadkeys be-latin1
 #  rfkill unblock all
+#  ip link set wlp1s0 up
 ```
