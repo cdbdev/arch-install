@@ -133,7 +133,7 @@ $  sudo systemctl enable paccache.timer
 $  sudo pacman -S light-locker xfce4-power-manager
 $  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
 ```
-Enable `light-locker-command -l` in `/usr/bin/xflock4`:  
+Enable `light-locker-command -l` (suspend option) in `/usr/bin/xflock4`:  
 ```
 # Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
 for lock_cmd in \
@@ -148,7 +148,7 @@ done
 $  sudo pacman -S blueman
 $  sudo systemctl enable bluetooth
 ```
-Autostart blueman for users in wheel group in file `90-blueman.rules`:  
+Autostart blueman (bluetooth) for users in wheel group in file `90-blueman.rules`:  
 ```
 /* Allow users in wheel group to use blueman feature requiring root without authentication */
 polkit.addRule(function(action, subject) {
@@ -162,6 +162,7 @@ polkit.addRule(function(action, subject) {
     }
 });
 ```
+Enable boot for Windows:
 ```
 $  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
