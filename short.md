@@ -48,12 +48,8 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 #  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
 #  hwclock --systohc
-```
-Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen.
-```
+#  vi /etc/locale.gen		_(uncomment **en_US.UTF-8 UTF-8**)_
 #  locale-gen
-```
-```
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 #  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
 #  echo "myarch" > /etc/hostname
