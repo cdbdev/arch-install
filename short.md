@@ -36,9 +36,36 @@ Press **Enter**.
 #  mount /dev/sda<root partition> /mnt
 #  mkdir /mnt/efi
 #  mount /dev/sda<efi partition> /mnt/efi
+```
 
 ## Installation
 Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 ```
 #  pacstrap /mnt base
+#  cp wpa_supplicant.conf /mnt/var
+#  genfstab -U /mnt >> /mnt/etc/fstab
+#  arch-chroot /mnt
+#  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+#  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
+#  hwclock --systohc
+```
+Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen and generate with:
+```
+#  locale-gen
+#  echo "LANG=en_US.UTF-8" > /etc/locale.conf
+#  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
+#  echo "myarch" > /etc/hostname
+#  echo -e "127.0.0.1\tlocalhost" > /etc/hosts
+#  echo -e "::1\t\tlocalhost" >> /etc/hosts
+# passwd
+#  useradd --create-home chris
+#  passwd chris
+#  pacman -S reflector
+#  reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+#  pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi screenfetch
+#  visudo  
+#  gpasswd -a chris wheel
+#  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
+#  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
+
 ```
