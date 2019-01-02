@@ -70,3 +70,18 @@ Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen.
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
 ```
+Edit the copied file and change/add the following:
+```
+Interface=wlp1s0  
+Security=wpa-config  
+WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
+```
+Add `ctrl_interface=/var/run/wpa_supplicant` to `wpa_supplicant.conf` (on 1st line):
+```
+ctrl_interface=/var/run/wpa_supplicant 
+network={
+	ssid=”MYSSID”
+	#psk=”passphrase”
+	psk=???
+}  
+```
