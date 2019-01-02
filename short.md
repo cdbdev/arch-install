@@ -16,19 +16,29 @@ Press **Enter**.
 #  ping www.google.be
 #  timedatectl set-ntp true
 #  gdisk /dev/sda
-  Command (? for help): d
-  Partition number (1-6): 4
-  Command (? for help): d
-  Partition number (1-6): 5
-  Command (? for help): n
-  Partition number (4-128, default 4):
-  First sector (34-1532901375, default = 643708928) or {+-}size{KMGTP}:
-  Last sector (643708928-1532901375, default = 1532901375) or {+-}size{KMGTP}: +412G
-  Hex code or GUID (L to show codes, Enter = 8300):
-  Partition number (5-128, default 5): 
-  First sector (34-1532901375, default = 1507735552) or {+-}size{KMGTP}:
-  Last sector (1507735552-1532901375, default = 1532901375) or {+-}size{KMGTP}:
-  Hex code or GUID (L to show codes, Enter = 8300): 8200
-  w
+    Command (? for help): d
+    Partition number (1-6): 4
+    Command (? for help): d
+    Partition number (1-6): 5
+    Command (? for help): n
+    Partition number (4-128, default 4):
+    First sector (34-1532901375, default = 643708928) or {+-}size{KMGTP}:
+    Last sector (643708928-1532901375, default = 1532901375) or {+-}size{KMGTP}: +412G
+    Hex code or GUID (L to show codes, Enter = 8300):
+    Partition number (5-128, default 5): 
+    First sector (34-1532901375, default = 1507735552) or {+-}size{KMGTP}:
+    Last sector (1507735552-1532901375, default = 1532901375) or {+-}size{KMGTP}:
+    Hex code or GUID (L to show codes, Enter = 8300): 8200
+    Command (? for help): w
+#  mkfs.ext4 /dev/sda<root partition>
+#  mkswap /dev/sda<swap partition>
+#  swapon /dev/sda<swap partition>
+#  mount /dev/sda<root partition> /mnt
+#  mkdir /mnt/efi
+#  mount /dev/sda<efi partition> /mnt/efi
 
+## Installation
+Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
+```
+#  pacstrap /mnt base
 ```
