@@ -48,7 +48,7 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 #  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
 #  hwclock --systohc
-#  vi /etc/locale.gen		(uncomment: "en_US.UTF-8 UTF-8")
+#  vi /etc/locale.gen		--> (uncomment: "en_US.UTF-8 UTF-8")
 #  locale-gen
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 #  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
@@ -65,11 +65,11 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
-#  vi /etc/netctl/wireless-wpa		(edit/change to the following)
+#  vi /etc/netctl/wireless-wpa		--> (edit/change to the following)
 	Interface=wlp1s0  
 	Security=wpa-config  
 	WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
-#  vi /etc/wpa_supplicant/wpa_supplicant.conf		(add "ctrl_interface" to 1st line)
+#  vi /etc/wpa_supplicant/wpa_supplicant.conf		--> (add "ctrl_interface" to 1st line)
 	ctrl_interface=/var/run/wpa_supplicant 
 	network={
 		ssid=”MYSSID”
@@ -79,19 +79,19 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  netctl enable wireless-wpa
 #  pacman -S grub efibootmgr
 #  grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch  
-#  vi /etc/default/grub		(change variable "GRUB_CMDLINE_LINUX_DEFAULT" to:)
+#  vi /etc/default/grub		--> (change variable "GRUB_CMDLINE_LINUX_DEFAULT" to:)
 	"quiet acpi_backlight=none amdgpu.dc=0"
 #  grub-mkconfig -o /boot/grub/grub.cfg
 #  pacman -S xorg-server
 #  pacman -S xfce4 xfce4-goodies
 #  pacman -S lightdm lightdm-gtk-greeter
-#  vi /etc/lightdm/lightdm.conf		(change [Seat:*] section, like so:)
+#  vi /etc/lightdm/lightdm.conf		--> (change [Seat:*] section, like so:)
 	[Seat:*]
 	...
 	greeter-session=lightdm-gtk-greeter
 	...
 #  systemctl enable lightdm.service
-#  vi /etc/X11/xorg.conf.d/20-keyboard.conf		(add the following)
+#  vi /etc/X11/xorg.conf.d/20-keyboard.conf		--> (add the following)
 	Section "InputClass"
 		Identifier "keyboard"
 		MatchIsKeyboard "yes"
