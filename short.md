@@ -48,7 +48,7 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 #  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
 #  hwclock --systohc
-#  vi /etc/locale.gen		_(uncomment **en_US.UTF-8 UTF-8**)_
+#  vi /etc/locale.gen		(uncomment: "en_US.UTF-8 UTF-8")
 #  locale-gen
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 #  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
@@ -65,57 +65,39 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
-```
-Edit the copied file and change/add the following:
-```
-Interface=wlp1s0  
-Security=wpa-config  
-WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
-```
-Add `ctrl_interface=/var/run/wpa_supplicant` to `wpa_supplicant.conf` (on 1st line):
-```
-ctrl_interface=/var/run/wpa_supplicant 
-network={
-	ssid=”MYSSID”
-	#psk=”passphrase”
-	psk=???
-}  
-```
-```
+#  vi /etc/netctl/wireless-wpa		(edit/change to the following)
+	Interface=wlp1s0  
+	Security=wpa-config  
+	WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
+#  vi /etc/wpa_supplicant/wpa_supplicant.conf		(add: "ctrl_interface=/var/run/wpa_supplicant" to 1st line)
+	ctrl_interface=/var/run/wpa_supplicant 
+	network={
+		ssid=”MYSSID”
+		#psk=”passphrase”
+		psk=???
+	}  
 #  netctl enable wireless-wpa
 #  pacman -S grub efibootmgr
-#  grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch
-```
-Edit `/etc/default/grub` and change the variable `GRUB_CMDLINE_LINUX_DEFAULT` to:
-```
-"quiet acpi_backlight=none amdgpu.dc=0"
-```
-```
+#  grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch  
+#  vi /etc/default/grub		(change variable "GRUB_CMDLINE_LINUX_DEFAULT" to:)
+	"quiet acpi_backlight=none amdgpu.dc=0"
 #  grub-mkconfig -o /boot/grub/grub.cfg
 #  pacman -S xorg-server
 #  pacman -S xfce4 xfce4-goodies
 #  pacman -S lightdm lightdm-gtk-greeter
-```
-Change Lightdm session to use lightdm-gtk-greeter under section Seat:  
-```
-[Seat:*]
-...
-greeter-session=lightdm-gtk-greeter
-...
-```
-```
+#  vi /etc/lightdm/lightdm.conf		(change greeter-session to "lightdm-gtk-greeter")
+	[Seat:*]
+	...
+	greeter-session=lightdm-gtk-greeter
+	...
 #  systemctl enable lightdm.service
-```
-Set keyboard layout at login in file /etc/X11/xorg.conf.d/20-keyboard.conf:  
-```
-Section "InputClass"
-	Identifier "keyboard"
-	MatchIsKeyboard "yes"
-	Option "XkbLayout" "be"
-	Option "XkbVariant" "nodeadkeys"
-EndSection
-```
-```
+#  vi /etc/X11/xorg.conf.d/20-keyboard.conf		(add the following)
+	Section "InputClass"
+		Identifier "keyboard"
+		MatchIsKeyboard "yes"
+		Option "XkbLayout" "be"
+		Option "XkbVariant" "nodeadkeys"
+	EndSection
 #  pacman -S gvfs
 #  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
 #  exit
