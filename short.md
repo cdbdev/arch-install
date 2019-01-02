@@ -49,15 +49,17 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
 #  hwclock --systohc
 ```
-Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen and generate with:
+Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen.
 ```
 #  locale-gen
+```
+```
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 #  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
 #  echo "myarch" > /etc/hostname
 #  echo -e "127.0.0.1\tlocalhost" > /etc/hosts
 #  echo -e "::1\t\tlocalhost" >> /etc/hosts
-# passwd
+#  passwd
 #  useradd --create-home chris
 #  passwd chris
 #  pacman -S reflector
@@ -67,5 +69,4 @@ Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen and generate with:
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
-
 ```
