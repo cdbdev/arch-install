@@ -69,7 +69,7 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 	Interface=wlp1s0  
 	Security=wpa-config  
 	WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
-#  vi /etc/wpa_supplicant/wpa_supplicant.conf		(add: "ctrl_interface=/var/run/wpa_supplicant" to 1st line)
+#  vi /etc/wpa_supplicant/wpa_supplicant.conf		(add "ctrl_interface" to 1st line)
 	ctrl_interface=/var/run/wpa_supplicant 
 	network={
 		ssid=”MYSSID”
@@ -85,7 +85,7 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 #  pacman -S xorg-server
 #  pacman -S xfce4 xfce4-goodies
 #  pacman -S lightdm lightdm-gtk-greeter
-#  vi /etc/lightdm/lightdm.conf		(change greeter-session to "lightdm-gtk-greeter")
+#  vi /etc/lightdm/lightdm.conf		(change [Seat:*] section, like so:)
 	[Seat:*]
 	...
 	greeter-session=lightdm-gtk-greeter
