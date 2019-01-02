@@ -122,6 +122,84 @@ EndSection
 ```
 #  pacman -S gvfs
 #  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
+#  exit
+#  umount -R /mnt    
+#  reboot
 ```
 
 ## Post installation
+```
+$  sudo systemctl enable paccache.timer
+$  sudo pacman -S light-locker xfce4-power-manager
+$  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
+```
+Enable `light-locker-command -l` in `/usr/bin/xflock4`:  
+```
+# Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
+for lock_cmd in \
+    "light-locker-command -l" \
+    "xscreensaver-command -lock" \
+    "gnome-screensaver-command --lock"
+do
+    $lock_cmd >/dev/null 2>&1 && exit
+done
+```
+```
+$  sudo pacman -S blueman
+$  sudo systemctl enable bluetooth
+```
+Autostart blueman for users in wheel group in file `90-blueman.rules`:  
+```
+/* Allow users in wheel group to use blueman feature requiring root without authentication */
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.network.setup" ||
+         action.id == "org.blueman.dhcp.client" ||
+         action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.pppd.pppconnect") &&
+        subject.isInGroup("wheel")) {
+
+        return polkit.Result.YES;
+    }
+});
+```
+```
+$  sudo pacman -S ntfs-3g
+$  sudo mkdir /mnt/windows
+$  sudo mount /dev/sda<other os partition number> /mnt/windows
+$  sudo pacman -S os-prober
+$  sudo os-prober
+$  sudo grub-mkconfig -o /boot/grub/grub.cfg
+$  sudo umount /mnt/windows
+```
+## Troubleshooting
+_**wpa_passphrase**_:  
+Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
+In case of errors, run `wpa_supplicant` without `-B` option.
+
+_**Error: could not set interface 'p2p ...' up**_:  
+```
+#  killall wpa_supplicant dhcpcd
+#  wpa_supplicant -B -i wlp1s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+_**No grub menu at boot**_:  
+Enter the following commands (considering '4' is the correct partition number of root installation):  
+```
+#  grub rescue> set prefix=(hd0,4)/boot/grub
+#  grub rescue> insmod normal
+#  grub rescue> normal
+```
+
+Reinstall grub when booted in Arch.
+
+_**No wireless with netctl**_:  
+```
+#  rfkill unblock all
+#  reboot
+```
+
+_**Screen too dark**_:  
+```
+#  cd /sys/class/backlight/amdgpu_bl0
+#  tee brightness <<< 150
+```
