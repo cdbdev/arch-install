@@ -110,38 +110,29 @@ Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 $  sudo systemctl enable paccache.timer
 $  sudo pacman -S light-locker xfce4-power-manager
 $  xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
-```
-Enable `light-locker-command -l` (suspend option) in `/usr/bin/xflock4`:  
-```
-# Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
-for lock_cmd in \
-    "light-locker-command -l" \
-    "xscreensaver-command -lock" \
-    "gnome-screensaver-command --lock"
-do
-    $lock_cmd >/dev/null 2>&1 && exit
-done
-```
-```
+$  vi /usr/bin/xflock4		--> (enable "light-locker-command -l")
+	# Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
+	for lock_cmd in \
+	    "light-locker-command -l" \
+	    "xscreensaver-command -lock" \
+	    "gnome-screensaver-command --lock"
+	do
+	    $lock_cmd >/dev/null 2>&1 && exit
+	done
 $  sudo pacman -S blueman
 $  sudo systemctl enable bluetooth
-```
-Autostart blueman (bluetooth) for users in wheel group in file `90-blueman.rules`:  
-```
-/* Allow users in wheel group to use blueman feature requiring root without authentication */
-polkit.addRule(function(action, subject) {
-    if ((action.id == "org.blueman.network.setup" ||
-         action.id == "org.blueman.dhcp.client" ||
-         action.id == "org.blueman.rfkill.setstate" ||
-         action.id == "org.blueman.pppd.pppconnect") &&
-        subject.isInGroup("wheel")) {
+$  vi /etc/polkit-1/rules.d/90-blueman.rules		--> (add the following)
+	/* Allow users in wheel group to use blueman feature requiring root without authentication */
+	polkit.addRule(function(action, subject) {
+	    if ((action.id == "org.blueman.network.setup" ||
+		 action.id == "org.blueman.dhcp.client" ||
+		 action.id == "org.blueman.rfkill.setstate" ||
+		 action.id == "org.blueman.pppd.pppconnect") &&
+		subject.isInGroup("wheel")) {
 
-        return polkit.Result.YES;
-    }
-});
-```
-Enable boot for Windows:
-```
+		return polkit.Result.YES;
+	    }
+	});
 $  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
 $  sudo mount /dev/sda<other os partition number> /mnt/windows
