@@ -39,8 +39,8 @@ Press **Enter**.
 ```
 
 ## Installation
-Put server ‘Belgium’ on top in `/etc/pacman.d/mirrorlist`.
 ```
+#  vi /etc/pacman.d/mirrorlist		--> (put server 'Belgium' on top)
 #  pacstrap /mnt base
 #  cp wpa_supplicant.conf /mnt/var
 #  genfstab -U /mnt >> /mnt/etc/fstab
