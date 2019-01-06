@@ -60,7 +60,7 @@ Press **Enter**.
 #  passwd chris
 #  pacman -S reflector
 #  reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
-#  pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi screenfetch
+#  pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi 
 #  visudo  
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
@@ -91,15 +91,9 @@ Press **Enter**.
 	greeter-session=lightdm-gtk-greeter
 	...
 #  systemctl enable lightdm.service
-#  vi /etc/X11/xorg.conf.d/20-keyboard.conf		--> (add the following)
-	Section "InputClass"
-		Identifier "keyboard"
-		MatchIsKeyboard "yes"
-		Option "XkbLayout" "be"
-		Option "XkbVariant" "nodeadkeys"
-	EndSection
+#  localectl --no-convert set-x11-keymap be “” nodeadkeys
 #  pacman -S gvfs
-#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
+#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice
 #  exit
 #  umount -R /mnt    
 #  reboot
