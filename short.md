@@ -129,7 +129,7 @@ $  vi /etc/polkit-1/rules.d/90-blueman.rules		--> (add the following)
 	});
 $  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
-$  sudo mount /dev/sda<other os partition number> /mnt/windows
+$  sudo mount /dev/sda<windows partition number> /mnt/windows
 $  sudo pacman -S os-prober
 $  sudo os-prober
 $  sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -147,7 +147,7 @@ _**Error: could not set interface 'p2p ...' up**_:
 ```
 
 _**No grub menu at boot**_:  
-Enter the following commands (considering '4' is the correct partition number of root installation):  
+Enter the following commands (considering '4' is the correct partition number of root installation, otherwise check with command ‘**ls**’):  
 ```
 #  grub rescue> set prefix=(hd0,4)/boot/grub
 #  grub rescue> insmod normal
