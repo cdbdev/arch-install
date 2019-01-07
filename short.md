@@ -91,7 +91,13 @@ Press **Enter**.
 	greeter-session=lightdm-gtk-greeter
 	...
 #  systemctl enable lightdm.service
-#  localectl --no-convert set-x11-keymap be “” nodeadkeys
+#  vi ?
+	Section "InputClass"
+		Identifier "mykeyboard"
+		MatchIsKeyboard "on"
+		Option "XkbLayout" "be"
+		Option "XkbVariant" "nodeadkeys"
+	EndSection
 #  pacman -S gvfs
 #  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice
 #  exit
