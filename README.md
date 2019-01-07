@@ -306,8 +306,8 @@ Enable `lightdm` service:
 Set keyboard layout at login in file `/etc/X11/xorg.conf.d/20-keyboard.conf`:  
 ```
 Section "InputClass"
-	Identifier "keyboard"
-	MatchIsKeyboard "yes"
+	Identifier "mykeyboard"
+	MatchIsKeyboard "on"
 	Option "XkbLayout" "be"
 	Option "XkbVariant" "nodeadkeys"
 EndSection
