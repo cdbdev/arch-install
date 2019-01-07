@@ -91,7 +91,7 @@ Press **Enter**.
 	greeter-session=lightdm-gtk-greeter
 	...
 #  systemctl enable lightdm.service
-#  vi ?
+#  vi /etc/X11/xorg.conf.d/20-keyboard.conf
 	Section "InputClass"
 		Identifier "mykeyboard"
 		MatchIsKeyboard "on"
