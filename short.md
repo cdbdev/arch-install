@@ -26,7 +26,7 @@ Press **Enter**.
     Last sector (643708928-1532901375, default = 1532901375) or {+-}size{KMGTP}: +412G
     Hex code or GUID (L to show codes, Enter = 8300):
     Partition number (5-128, default 5): 
-    First sector (34-1532901375, default = 1507735552) or {+-}size{KMGTP}:
+    First sector (34-1532901375, default = 1507735552) or {+-}size{KMGTP}: +12G
     Last sector (1507735552-1532901375, default = 1532901375) or {+-}size{KMGTP}:
     Hex code or GUID (L to show codes, Enter = 8300): 8200
     Command (? for help): w
