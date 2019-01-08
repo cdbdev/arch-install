@@ -320,7 +320,7 @@ Enable auto-mount for usb:
 
 Install some extra packages:  
 ```
-#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio
+#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator
 ```
 
 ## Reboot
