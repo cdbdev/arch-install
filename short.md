@@ -99,7 +99,7 @@ Press **Enter**.
 		Option "XkbVariant" "nodeadkeys"
 	EndSection
 #  pacman -S gvfs
-#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice
+#  pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator
 #  exit
 #  umount -R /mnt    
 #  reboot
