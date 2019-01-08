@@ -30,17 +30,17 @@ Press **Enter**.
     Last sector (1507735552-1532901375, default = 1532901375) or {+-}size{KMGTP}:
     Hex code or GUID (L to show codes, Enter = 8300): 8200
     Command (? for help): w
-#  mkfs.ext4 /dev/sda<root partition>
-#  mkswap /dev/sda<swap partition>
-#  swapon /dev/sda<swap partition>
-#  mount /dev/sda<root partition> /mnt
+#  mkfs.ext4 /dev/sda4
+#  mkswap /dev/sda5
+#  swapon /dev/sda5
+#  mount /dev/sda4 /mnt
 #  mkdir /mnt/efi
-#  mount /dev/sda<efi partition> /mnt/efi
+#  mount /dev/sda1 /mnt/efi
 ```
 
 ## Installation
 ```
-#  vi /etc/pacman.d/mirrorlist		--> (put server 'Belgium' on top)
+#  vi /etc/pacman.d/mirrorlist	--> (put server 'Belgium' on top)
 #  pacstrap /mnt base
 #  cp wpa_supplicant.conf /mnt/var
 #  genfstab -U /mnt >> /mnt/etc/fstab
@@ -48,7 +48,7 @@ Press **Enter**.
 #  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 #  ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime  
 #  hwclock --systohc
-#  vi /etc/locale.gen		--> (uncomment: "en_US.UTF-8 UTF-8")
+#  vi /etc/locale.gen	--> (uncomment: "en_US.UTF-8 UTF-8")
 #  locale-gen
 #  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 #  echo "KEYMAP=be-latin1" > /etc/vconsole.conf
@@ -65,11 +65,11 @@ Press **Enter**.
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
-#  vi /etc/netctl/wireless-wpa		--> (edit/change to the following)
+#  vi /etc/netctl/wireless-wpa	--> (edit/change to the following)
 	Interface=wlp1s0  
 	Security=wpa-config  
 	WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'  
-#  vi /etc/wpa_supplicant/wpa_supplicant.conf		--> (add "ctrl_interface" to 1st line)
+#  vi /etc/wpa_supplicant/wpa_supplicant.conf	--> (add "ctrl_interface")
 	ctrl_interface=/var/run/wpa_supplicant 
 	network={
 		ssid=”MYSSID”
@@ -121,7 +121,7 @@ $  vi /usr/bin/xflock4		--> (enable "light-locker-command -l")
 	done
 $  sudo pacman -S blueman
 $  sudo systemctl enable bluetooth
-$  vi /etc/polkit-1/rules.d/90-blueman.rules		--> (add the following)
+$  vi /etc/polkit-1/rules.d/90-blueman.rules	--> (add the following)
 	/* Allow users in wheel group to use blueman feature requiring root without authentication */
 	polkit.addRule(function(action, subject) {
 	    if ((action.id == "org.blueman.network.setup" ||
