@@ -135,7 +135,7 @@ $  vi /etc/polkit-1/rules.d/90-blueman.rules	--> (add the following)
 	});
 $  sudo pacman -S ntfs-3g
 $  sudo mkdir /mnt/windows
-$  sudo mount /dev/sda<windows partition number> /mnt/windows
+$  sudo mount /dev/sda3 /mnt/windows
 $  sudo pacman -S os-prober
 $  sudo os-prober
 $  sudo grub-mkconfig -o /boot/grub/grub.cfg
