@@ -80,7 +80,7 @@ mount /dev/sda1 /mnt/efi
 
 # Put server 'Belgium' on top in : /etc/pacman.d/mirrorlist
 echo "Put mirror servers of 'Belgium' on top in the following file"
-echo "Press <Enter> to edit /etc/pacman.d/mirrorlist"
+echo ":: Press <Enter> to edit /etc/pacman.d/mirrorlist"
 read press_enter
 vi /etc/pacman.d/mirrorlist
 
