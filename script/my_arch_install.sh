@@ -9,18 +9,18 @@
 # ----------------------------------------------------------------------- #
 
 
-# --------------------- #
-# Check if user is root #
-# --------------------- #
+
+# Check if user is root 
+# --------------------- 
 
 if [ $EUID -ne 0 ]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
 
-# ----------------------------------------------- #
-# Initial setup ( keyboard, wireless, time/date ) #
-# ----------------------------------------------- #
+
+# Initial setup ( keyboard, wireless, time/date )
+# ----------------------------------------------- 
 
 echo "Loading BE keyboard..."
 loadkeys be-latin1
@@ -58,9 +58,8 @@ fi
 timedatectl set-ntp true
 
 
-# ----------------------------------------- #
-# Start Gdisk for partitioning of the disks #
-# ----------------------------------------- #
+# Start Gdisk for partitioning of the disks 
+# -----------------------------------------
 
 echo "Starting gdisk..."
 sgdisk /dev/sda -p
@@ -70,24 +69,22 @@ sgdisk /dev/sda -n=4:0:+412G -t=4:8300
 sgdisk /dev/sda -n=5:0:+12G -t=5:8200
 
 
-# ----------------------------------------------------------------- #
-# Format partitions (one partition for system + partition for swap) #
-# ----------------------------------------------------------------- #
+# Format partitions (one partition for system + partition for swap) 
+# ----------------------------------------------------------------- 
 mkfs.ext4 /dev/sda4
 mkswap /dev/sda5
 swapon /dev/sda5
 
-# ---------------------- #
-# Mount the file systems #
-# ---------------------- #
+
+# Mount the file systems
+# ----------------------
 mount /dev/sda4 /mnt
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
 
-# ----------------- #
-# Arch installation #
-# ----------------- #
+# Arch installation
+# -----------------
 
 # Put server 'Belgium' on top in : /etc/pacman.d/mirrorlist
 echo "Put mirror servers of 'Belgium' on top in the following file"
@@ -99,9 +96,8 @@ vi /etc/pacman.d/mirrorlist
 pacstrap /mnt base
 
 
-# -------------------- #
-# Configure the system #
-# -------------------- #
+# Configure the system
+# --------------------
 
 # genfstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -181,8 +177,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Exit chroot..."
 exit
 
-# ------ #
-# Reboot #
-# ------ #
+
+# Reboot
+# ------
 umount -R /mnt
 reboot
