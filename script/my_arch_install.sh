@@ -80,7 +80,7 @@ mount /dev/sda1 /mnt/efi
 
 # Put server 'Belgium' on top in : /etc/pacman.d/mirrorlist
 echo "Put mirror servers of 'Belgium' on top in the following file"
-echo ":: Press <Enter> to edit /etc/pacman.d/mirrorlist"
+echo ":: Please press <Enter> to edit /etc/pacman.d/mirrorlist"
 read press_enter
 vi /etc/pacman.d/mirrorlist
 
@@ -129,10 +129,10 @@ echo ":: Set password for root"
 passwd
 
 # 6 Setup new user
-echo ":: Enter new username"
+echo ":: Please enter new username"
 read new_user
 useradd --create-home "$new_user"
-echo ":: Set password for new user"
+echo ":: Please set password for new user"
 passwd chris
 
 # 7 Retrieve latest mirrors and update mirrorlist
@@ -146,7 +146,7 @@ pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi
 
 # 9 Change permissions for new user
 echo "Change permissions for new user"
-echo ":: Press <Enter> to edit sudo"
+echo ":: Please press <Enter> to edit sudo"
 read press_enter
 visudo
 echo "Adding user to group 'wheel'..."
