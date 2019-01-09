@@ -1,3 +1,14 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------- #
+# Arch Linux install script						  #
+# ----------------------------------------------------------------------- #
+# Author    : Chris							  #
+# Project   : https://github.com/cdbdev/arch-install			  #
+# Reference : https://wiki.archlinux.org/index.php/Installation_guide	  #
+# ----------------------------------------------------------------------- #
+
+
 # --------------------- #
 # Check if user is root #
 # --------------------- #
