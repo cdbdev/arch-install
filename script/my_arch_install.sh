@@ -94,6 +94,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy 'wpa_supplicant' to new system
 cp wpa_supplicant.conf /mnt/var
+cp conf/* /mnt/var
 
 # Chroot
 echo "Change root into the new system"
@@ -152,8 +153,7 @@ gpasswd -a chris wheel
 # 10 Enable wifi at boot with netctl
 echo "Enabling WIFI at boot..."
 mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
-cp /etc/netctl/examples/wireless-wpa /etc/netctl/
-vi /etc/netctl/wireless-wpa
+mv /var/wireless-wpa /etc/netctl
 # 10.1 Add 'ctrl_interface=/var/run/wpa_supplicant' to 1st line of 'wpa_supplicant.conf'
 sed -i '1 i\ctrl_interface=/var/run/wpa_supplicant\n' /etc/wpa_supplicant/wpa_supplicant.conf
 netctl enable wireless-wpa
