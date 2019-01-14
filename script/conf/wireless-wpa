@@ -1,1 +1,8 @@
+Description='My Wifi'
+Interface=wlp1s0
+Connection=wireless
 
+Security=wpa-config
+IP=dhcp
+
+WPAConfigFile='/etc/wpa_supplicant/wpa_supplicant.conf'
