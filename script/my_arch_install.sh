@@ -94,7 +94,7 @@ cp conf/* /mnt/var
 
 # Chroot
 echo "Change root into the new system"
-arch-chroot /mnt
+arch-chroot /mnt /bin/bash <<EOF
 
 # 1 Disable <beep>
 echo "Disabling <beep>"
@@ -161,7 +161,7 @@ grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch
 sed -i 's/\"quiet/\"quiet acpi_backlight=none amdgpu.dc=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 echo "Exit chroot..."
-exit
+EOF
 
 
 # Reboot
