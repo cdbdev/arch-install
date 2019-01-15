@@ -9,6 +9,7 @@
 # ----------------------------------------------------------------------- #
 
 
+# ----------------------------------------------- 
 # Initial setup ( keyboard, wireless, time/date )
 # ----------------------------------------------- 
 
@@ -48,6 +49,7 @@ fi
 timedatectl set-ntp true
 
 
+# -----------------------------------------
 # Start Gdisk for partitioning of the disks 
 # -----------------------------------------
 
@@ -55,6 +57,7 @@ echo "Starting gdisk..."
 printf "d\n4\nd\n5\nn\n4\n\n+412G\n8300\nn\n5\n\n+12G\n8200\nw\ny\n" | gdisk /dev/sda
 
 
+# ----------------------------------------------------------------- 
 # Format partitions (one partition for system + partition for swap) 
 # ----------------------------------------------------------------- 
 mkfs.ext4 /dev/sda4
@@ -62,6 +65,7 @@ mkswap /dev/sda5
 swapon /dev/sda5
 
 
+# ----------------------
 # Mount the file systems
 # ----------------------
 mount /dev/sda4 /mnt
@@ -69,6 +73,7 @@ mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
 
+# -----------------
 # Arch installation
 # -----------------
 
@@ -82,6 +87,7 @@ vi /etc/pacman.d/mirrorlist
 pacstrap /mnt base
 
 
+# --------------------
 # Configure the system
 # --------------------
 
@@ -164,6 +170,7 @@ echo "Exit chroot..."
 EOF
 
 
+# ------
 # Reboot
 # ------
 umount -R /mnt
