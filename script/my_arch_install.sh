@@ -52,7 +52,7 @@ timedatectl set-ntp true
 # -----------------------------------------
 
 echo "Starting gdisk..."
-printf "d\n4\nd\n5\nn\n4\n\n+412G\n8300\nn\n5\n\n+12G\n8200\nw\ny\n"| gdisk /dev/sda
+printf "d\n4\nd\n5\nn\n4\n\n+412G\n8300\nn\n5\n\n+12G\n8200\nw\ny\n" | gdisk /dev/sda
 
 
 # Format partitions (one partition for system + partition for swap) 
