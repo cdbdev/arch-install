@@ -21,16 +21,16 @@ rfkill unblock all
 
 # Ask interface name and enable it
 ip link show
-echo -n ":: Please enter wifi interface name [wlp1s0,...] "
+echo -n ">> Please enter wifi interface name [wlp1s0,...]: "
 read wifi_int
 
 ip link set "$wifi_int" up
 
 # Ask wifi SSID + WPA Key and try to connect
-echo -n ":: Please enter SSID "
+echo -n ">> Please enter SSID: "
 read ssid
 
-echo -n ":: Please enter WPA key "
+echo -n ">> Please enter WPA key: "
 read wpa_key
 
 wpa_passphrase "$ssid" "$wpa_key" > wpa_supplicant.conf
@@ -79,7 +79,7 @@ mount /dev/sda1 /mnt/efi
 
 # Put server 'Belgium' on top in : /etc/pacman.d/mirrorlist
 echo "Put mirror servers of 'Belgium' on top in the following file"
-echo -n ":: Please press <Enter> to edit /etc/pacman.d/mirrorlist"
+echo -n ">> Please press <Enter> to edit /etc/pacman.d/mirrorlist"
 read press_enter
 vi /etc/pacman.d/mirrorlist
 
@@ -128,10 +128,10 @@ echo ":: Set password for root"
 passwd
 
 # 6 Setup new user
-echo -n ":: Please enter new username "
+echo -n ">> Please enter new username: "
 read new_user
 useradd --create-home "$new_user"
-echo ":: Please set password for new user"
+echo ">> Please set password for new user"
 passwd chris
 
 # 7 Retrieve latest mirrors and update mirrorlist
@@ -145,7 +145,7 @@ pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi
 
 # 9 Change permissions for new user
 echo "Change permissions for new user"
-echo ":: Please press <Enter> to edit sudo"
+echo ">> Please press <Enter> to edit sudo"
 read press_enter
 visudo
 echo "Adding user to group 'wheel'..."
