@@ -32,7 +32,7 @@ read ssid
 echo ":: Please enter WPA key"
 read wpa_key
 
-wpa_passphrase "$SSID" "$wpa_key" > wpa_supplicant.conf
+wpa_passphrase "$ssid" "$wpa_key" > wpa_supplicant.conf
 wpa_supplicant -B -i "$wifi_int" -c wpa_supplicant.conf
 
 dhcpcd "$wifi_int"
