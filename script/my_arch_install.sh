@@ -155,15 +155,14 @@ echo -e "127.0.0.1\tlocalhost" > /etc/hosts
 echo -e "::1\t\tlocalhost" >> /etc/hosts
 
 # 5 Set root password
-echo ":: Set password for root"
-passwd
+echo ":: Setting password for root"
+echo "root:${root_pass}" | chpasswd
 
 # 6 Setup new user
-echo -n ">> Please enter new username: "
-read new_user
+echo -n ">> Setup new user"
 useradd --create-home "$new_user"
-echo ">> Please set password for new user"
-passwd chris
+echo "${new_user}:${new_user_pass}" | chpasswd
+
 
 # 7 Retrieve latest mirrors and update mirrorlist
 echo "Updating mirrorlist..."
