@@ -108,11 +108,9 @@ mount /dev/sda1 /mnt/efi
 # Arch installation
 # -----------------
 
-# Put server 'Belgium' on top in : /etc/pacman.d/mirrorlist
-echo "Put mirror servers of 'Belgium' on top in the following file"
-echo -n ">> Please press <Enter> to edit /etc/pacman.d/mirrorlist"
-read press_enter
-vi /etc/pacman.d/mirrorlist
+# Rank mirrors
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bckp
+curl -s "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&protocol=http&user_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -
 
 # Install base
 pacstrap /mnt base
