@@ -54,29 +54,26 @@ timedatectl set-ntp true
 # -----------------------------------------
 
 echo "Starting gdisk..."
-# The sed script strips off all the comments so that we can 
-# document what we're doing in-line with the actual commands
-# Note that a blank line (commented as "default" will send an empty
-# line terminated with a newline to take the gdisk default.
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | gdisk /dev/sda
-  d # remove partition
-  4 # partition 4 removal
-  d # remove partition
-  5 # partition 5 removal
-  n # new partition
-  4 # partition number 4
-    # default, start immediately after preceding partition
-  +412G # 412 GB linux partition
-  8300 # Partition type linux
-  n # new partition
-  5 # partition number 5
-    # default, start immediately after preceding partition
-  +12G # 12 GB linux partition
-  8200 # Partition type swap
-  p # print the in-memory partition table
-  w # write the partition table
-  q # and we're done
-EOF
+(
+echo d # remove partition
+echo 4 # partition 4 removal
+echo d # remove partition
+echo 5 # partition 5 removal
+echo n # new partition
+echo 4 # partition number 4
+echo   # default, start immediately after preceding partition
+echo +412G # + 412 GB linux partition
+echo 8300 # Partition type linux
+echo n # new partition
+echo 5 # partition number 5
+echo   # default, start immediately after preceding partition
+echo +12G # + 12 GB linux partition
+echo 8200 # Partition type swap
+echo p # print the in-memory partition table
+echo w # save changes
+echo y # confirm changes
+) | gdisk /dev/sda
+
 
 
 # ----------------------------------------------------------------- 
