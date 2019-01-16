@@ -175,11 +175,9 @@ pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi
 
 # 9 Change permissions for new user
 echo "Change permissions for new user"
-echo ">> Please press <Enter> to edit sudo"
-read press_enter
-visudo
+echo '$new_user ALL=(ALL:ALL) ALL' | EDITOR='tee -a' visudo
 echo "Adding user to group 'wheel'..."
-gpasswd -a chris wheel 
+gpasswd -a "$new_user" wheel 
 
 # 10 Enable wifi at boot with netctl
 echo "Enabling WIFI at boot..."
