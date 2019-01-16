@@ -175,7 +175,7 @@ pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi
 
 # 9 Change permissions for new user
 echo "Change permissions for new user"
-echo '$new_user ALL=(ALL:ALL) ALL' | EDITOR='tee -a' visudo
+echo "$new_user ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
 echo "Adding user to group 'wheel'..."
 gpasswd -a "$new_user" wheel 
 
