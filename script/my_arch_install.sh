@@ -109,8 +109,9 @@ mount /dev/sda1 /mnt/efi
 # -----------------
 
 # Rank mirrors
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bckp
-curl -s "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&protocol=http&user_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # Install base
 pacstrap /mnt base
