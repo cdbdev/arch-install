@@ -19,6 +19,18 @@ loadkeys be-latin1
 echo "Disabling soft blocks..."
 rfkill unblock all
 
+# Ask password for root
+echo -n ">> Please enter a password for 'root' user: "
+read -s root_pass
+echo
+
+# Ask credentials for new user
+echo -n ">> Please enter a name for the new user: "
+read new_user
+echo -n ">> Please enter a password for new user: "
+read -s new_user_pass
+echo
+
 # Ask interface name and enable it
 ip link show
 echo -n ">> Please enter wifi interface name [wlp1s0,...]: "
