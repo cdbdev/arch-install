@@ -13,10 +13,10 @@
 # Initial setup ( keyboard, wireless, time/date )
 # ----------------------------------------------- 
 
-echo "Loading BE keyboard..."
+echo ":: Loading BE keyboard..."
 loadkeys be-latin1
 
-echo "Disabling soft blocks..."
+echo ":: Disabling soft blocks..."
 rfkill unblock all
 
 # Ask password for root
@@ -52,9 +52,9 @@ dhcpcd "$wifi_int"
 
 # Check internet connection
 if ping -q -c 1 -W 1 google.com >/dev/null; then
-	echo "Internet up and running!"
+	echo ":: Internet up and running!"
 else
-    echo "Please check your internet connection! Installation aborted."
+    echo ":: Please check your internet connection! Installation aborted."
     exit 1
 fi
 
@@ -65,7 +65,7 @@ timedatectl set-ntp true
 # Start Gdisk for partitioning of the disks 
 # -----------------------------------------
 
-echo "Starting gdisk..."
+echo ":: Starting gdisk..."
 (
 echo d # remove partition
 echo 4 # partition 4 removal
@@ -75,23 +75,22 @@ echo n # new partition
 echo 4 # partition number 4
 echo   # default, start immediately after preceding partition
 echo +412G # + 412 GB linux partition
-echo 8300 # Partition type linux
+echo 8300 # partition type linux
 echo n # new partition
 echo 5 # partition number 5
 echo   # default, start immediately after preceding partition
-echo +12G # + 12 GB linux partition
-echo 8200 # Partition type swap
-echo p # print the in-memory partition table
+echo +12G # + 12 GB linux swap partition
+echo 8200 # partition type swap
+echo p # print in-memory partition table
 echo w # save changes
 echo y # confirm changes
 ) | gdisk /dev/sda
 
 
-
 # ----------------------------------------------------------------- 
 # Format partitions (one partition for system + partition for swap) 
 # ----------------------------------------------------------------- 
-mkfs.ext4 /dev/sda4
+yes | mkfs.ext4 /dev/sda4
 mkswap /dev/sda5
 swapon /dev/sda5
 
@@ -110,8 +109,8 @@ mount /dev/sda1 /mnt/efi
 
 # Rank mirrors
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&protocol=http&protocol=https" > /etc/pacman.d/mirrorlist
+sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
 
 # Install base
 pacstrap /mnt base
@@ -125,24 +124,24 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy 'wpa_supplicant' to new system
-cp wpa_supplicant.conf /mnt/var
-cp conf/* /mnt/var
+cp wpa_supplicant.conf /mnt/root/
+cp -r conf/. /mnt/root/
 
 # Chroot
-echo "Change root into the new system"
+echo ":: Change root into the new system"
 arch-chroot /mnt /bin/bash <<EOF
 
 # 1 Disable <beep>
-echo "Disabling <beep>"
+echo ":: Disabling <beep>"
 echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
 # 2 Time zone
-echo "Setup time zone"
+echo ":: Setup time zone"
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 hwclock --systohc
 
 # 3 Localization
-echo "Setup Localization"
+echo ":: Setup Localization"
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -164,35 +163,50 @@ echo "${new_user}:${new_user_pass}" | chpasswd
 
 
 # 7 Retrieve latest mirrors and update mirrorlist
-echo "Updating mirrorlist..."
-pacman -S reflector
+echo ":: Updating mirrorlist..."
+yes | pacman -S reflector --noconfirm
 reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
-echo "Installing user specific packages..."
-pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi
+echo ":: Installing user specific packages..."
+yes | pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi --noconfirm
+# 8.1 Setup ufw
+systemctl enable ufw
+ufw enable
 
 # 9 Change permissions for new user
-echo "Change permissions for new user"
+echo ":: Change permissions for new user"
 echo "$new_user ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
-echo "Adding user to group 'wheel'..."
+echo ":: Adding user to group 'wheel'..."
 gpasswd -a "$new_user" wheel 
 
 # 10 Enable wifi at boot with netctl
-echo "Enabling WIFI at boot..."
-mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
-mv /var/wireless-wpa /etc/netctl
+echo ":: Enabling WIFI at boot..."
+mv /root/wpa_supplicant.conf /etc/wpa_supplicant/
+mv /root/wireless-wpa /etc/netctl/
 # 10.1 Add 'ctrl_interface=/var/run/wpa_supplicant' to 1st line of 'wpa_supplicant.conf'
 sed -i '1 i\ctrl_interface=/var/run/wpa_supplicant\n' /etc/wpa_supplicant/wpa_supplicant.conf
 netctl enable wireless-wpa
 
 # 11 Install and configure grub
-pacman -S grub efibootmgr
-grub-install -–target=x86_64-efi –-efi-directory=/efi -–bootloader=arch
+yes | pacman -S grub efibootmgr --noconfirm
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
 # 11.1 Fix dark screen & hibernate (add 'acpi_backlight=none amdgpu.dc=0')
 sed -i 's/\"quiet/\"quiet acpi_backlight=none amdgpu.dc=0/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-echo "Exit chroot..."
+
+
+# 12  Install and prepare XFCE
+yes | pacman -S xorg-server --noconfirm
+yes | pacman -S xfce4 xfce4-goodies --noconfirm
+yes | pacman -S lightdm lightdm-gtk-greeter --noconfirm
+sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+systemctl enable lightdm.service
+mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
+yes | pacman -S gvfs firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator --noconfirm
+
+
+echo ":: Exit chroot..."
 EOF
 
 
