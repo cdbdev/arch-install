@@ -61,7 +61,7 @@ Press **Enter**.
 #  pacman -S reflector
 #  reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 #  pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi 
-#  visudo	--> (put chris ALL=(ALL) ALL)
+#  visudo	--> (put below root: chris ALL=(ALL) ALL)
 #  gpasswd -a chris wheel
 #  mv /var/wpa_supplicant.conf /etc/wpa_supplicant/
 #  cp /etc/netctl/examples/wireless-wpa /etc/netctl/
