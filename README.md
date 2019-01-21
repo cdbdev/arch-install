@@ -290,7 +290,7 @@ Install Display Manager (LightDM):
 #  pacman -S lightdm lightdm-gtk-greeter
 ```
 
-Change Lightdm session to use `lightdm-gtk-greeter` under section **Seat**:
+Change Lightdm session to use `lightdm-gtk-greeter` under section **Seat** in file `/etc/lightdm/lightdm.conf`:
 ```
 [Seat:*]
 ...
