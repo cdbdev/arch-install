@@ -2,7 +2,7 @@ echo ":: Running post-installation..."
 echo ":: Discard unused packages weekly"
 sudo systemctl enable paccache.timer
 echo ":: Installing light-locker..."
-sudo yes | pacman -S light-locker xfce4-power-manager --noconfirm
+yes | sudo pacman -S light-locker xfce4-power-manager --noconfirm
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
 echo ":: Installing blueman..."
 yes | sudo pacman -S blueman --noconfirm
