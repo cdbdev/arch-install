@@ -124,7 +124,7 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy necessary files to new system
-cp my_arch_install_post.sh /mnt/root
+cp my_arch_install_post.sh /mnt/root/
 cp wpa_supplicant.conf /mnt/root/
 cp -r conf/. /mnt/root/
 
