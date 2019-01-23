@@ -162,6 +162,7 @@ echo -n ">> Setup new user"
 useradd --create-home "$new_user"
 echo "${new_user}:${new_user_pass}" | chpasswd
 mv /root/my_arch_install_post.sh /home/"$new_user"/
+mv /root/90-blueman.rules /home/"$new_user"/
 
 # 7 Retrieve latest mirrors and update mirrorlist
 echo ":: Updating mirrorlist..."
