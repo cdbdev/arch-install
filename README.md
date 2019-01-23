@@ -1,6 +1,7 @@
 # Installation guide
 This guide documents the specific steps needed to install Arch Linux on my Lenovo ideapad 320.  
-Download this repo with: `wget --no-check-certificate https://github.com/cdbdev/arch-install/archive/master.tar.gz`
+Download this repo with:  
+`wget --no-check-certificate https://github.com/cdbdev/arch-install/archive/master.tar.gz`
 
 ## Installation media
 Download an installation image from https://www.archlinux.org/download/ and create the installation media:
