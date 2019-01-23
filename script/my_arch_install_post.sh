@@ -7,7 +7,7 @@ xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -
 echo ":: Installing blueman..."
 sudo yes | pacman -S blueman --noconfirm
 sudo systemctl enable bluetooth
-sudo mv /root/90-blueman.rules /etc/polkit-1/rules.d/
+sudo mv /home/"$USER"/90-blueman.rules /etc/polkit-1/rules.d/
 echo ":: Enable dual boot with windows..."
 sudo yes | pacman -S ntfs-3g --noconfirm
 sudo mkdir /mnt/windows
