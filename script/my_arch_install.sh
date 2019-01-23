@@ -123,7 +123,8 @@ pacstrap /mnt base
 # genfstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# Copy 'wpa_supplicant' to new system
+# Copy necessary files to new system
+cp my_arch_install_post.sh /mnt/root
 cp wpa_supplicant.conf /mnt/root/
 cp -r conf/. /mnt/root/
 
@@ -160,7 +161,7 @@ echo "root:${root_pass}" | chpasswd
 echo -n ">> Setup new user"
 useradd --create-home "$new_user"
 echo "${new_user}:${new_user_pass}" | chpasswd
-
+mv /root/my_arch_install_post.sh /home/"$new_user"/
 
 # 7 Retrieve latest mirrors and update mirrorlist
 echo ":: Updating mirrorlist..."
