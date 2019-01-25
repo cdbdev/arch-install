@@ -171,10 +171,10 @@ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
-yes | pacman -S pacman-contrib sudo ufw wpa_supplicant vim acpi --noconfirm
-# 8.1 Setup ufw
-systemctl enable ufw
-ufw enable
+yes | pacman -S pacman-contrib sudo nftables wpa_supplicant vim acpi --noconfirm
+# 8.1 Setup nftables
+mv /root/nftables.conf /etc/
+systemctl enable nftables.service
 
 # 9 Change permissions for new user
 echo ":: Change permissions for new user"
