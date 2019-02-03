@@ -400,7 +400,9 @@ $  sudo pacman -S hplip
 ```
 
 Now open url: http://localhost:631/  
-Click `Adding Printers and Classes` and choose 'Add Printer'.
+Click `Adding Printers and Classes` and choose `Add Printer`.  
+Enter root user and password.  
+Follow the wizard and eventually choose the driver `HP Deskjet f4100 Series`.
 
 ## Troubleshooting
 _**wpa_passphrase**_:  
