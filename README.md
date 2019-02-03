@@ -391,6 +391,17 @@ $  sudo grub-mkconfig -o /boot/grub/grub.cfg
 $  sudo umount /mnt/windows
 ```
 
+### Install Deskjet F4100 printer
+```
+$  sudo pacman -S cups
+$  sudo systemctl enable org.cups.cupsd.service
+$  sudo pacman -S ghostscript
+$  sudo pacman -S hplip
+```
+
+Now open url: http://localhost:631/  
+Click `Adding Printers and Classes` and choose 'Add Printer'.
+
 ## Troubleshooting
 _**wpa_passphrase**_:  
 Make sure you don't type mistakes during the entering of the command, otherwise strange characters could jump in.  
