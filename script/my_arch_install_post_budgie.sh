@@ -3,6 +3,8 @@ echo ":: Discard unused packages weekly"
 sudo systemctl enable paccache.timer
 echo ":: Enable bluetooth..."
 sudo systemctl enable bluetooth
+echo ":: Enbable right click..."
+gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
 echo ":: Enable dual boot with windows..."
 yes | sudo pacman -S ntfs-3g --noconfirm
 sudo mkdir /mnt/windows
