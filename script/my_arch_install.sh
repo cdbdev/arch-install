@@ -5,7 +5,7 @@
 # ----------------------------------------------------------------------- #
 # Author    : Chris							  #
 # Project   : https://github.com/cdbdev/arch-install			  #
-# Reference : https://wiki.archlinux.org/index.php/Installation_guide	  #
+# Reference : https://wiki.archlinux.org/index.php/Installation_guide	  #F
 # ----------------------------------------------------------------------- #
 
 
@@ -205,7 +205,7 @@ yes | pacman -S lightdm lightdm-gtk-greeter --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
-yes | pacman -S gvfs firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator --noconfirm
+yes | pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator thunar-volman gvfs --noconfirm
 
 
 echo ":: Exit chroot..."
