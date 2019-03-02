@@ -1,4 +1,7 @@
 echo ":: Running post-installation..."
+echo ":: Disable buttons on shutdown..."
+xfconf-query -c xfce4-session -np '/shutdown/ShowSuspend' -t 'bool' -s 'false'
+xfconf-query -c xfce4-session -np '/shutdown/ShowHibernate' -t 'bool' -s 'false'
 echo ":: Discard unused packages weekly"
 sudo systemctl enable paccache.timer
 echo ":: Installing light-locker..."
