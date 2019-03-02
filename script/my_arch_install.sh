@@ -45,8 +45,8 @@ read ssid
 echo -n ">> Please enter WPA key: "
 read wpa_key
 
-wpa_passphrase "$ssid" "$wpa_key" > wpa_supplicant.conf
-wpa_supplicant -B -i "$wifi_int" -c wpa_supplicant.conf
+wpa_passphrase "$ssid" "$wpa_key" > wpa_supplicant-"$wifi_int".conf
+wpa_supplicant -B -i "$wifi_int" -c wpa_supplicant-"$wifi_int".conf
 
 dhcpcd "$wifi_int"
 
@@ -125,7 +125,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy necessary files to new system
 cp my_arch_install_post.sh /mnt/root/
-cp wpa_supplicant.conf /mnt/root/
+cp wpa_supplicant-"$wifi_int".conf /mnt/root/
 cp -r conf/. /mnt/root/
 
 # Chroot
@@ -182,13 +182,11 @@ echo "$new_user ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
 echo ":: Adding user to group 'wheel'..."
 gpasswd -a "$new_user" wheel 
 
-# 10 Enable wifi at boot with netctl
+# 10 Enable wifi at boot
 echo ":: Enabling WIFI at boot..."
-mv /root/wpa_supplicant.conf /etc/wpa_supplicant/
-mv /root/wireless-wpa /etc/netctl/
-# 10.1 Add 'ctrl_interface=/var/run/wpa_supplicant' to 1st line of 'wpa_supplicant.conf'
-sed -i '1 i\ctrl_interface=/var/run/wpa_supplicant\n' /etc/wpa_supplicant/wpa_supplicant.conf
-netctl enable wireless-wpa
+mv /root/wpa_supplicant-"$wifi_int".conf /etc/wpa_supplicant/
+systemctl enable wpa_supplicant@"$wifi_int"
+systemctl enable dhcpcd@"$wifi_int"
 
 # 11 Install and configure grub
 yes | pacman -S grub efibootmgr --noconfirm
