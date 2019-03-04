@@ -185,6 +185,8 @@ gpasswd -a "$new_user" wheel
 # 10 Enable wifi at boot
 echo ":: Enabling WIFI at boot..."
 mv /root/wpa_supplicant-"$wifi_int".conf /etc/wpa_supplicant/
+# 10.1 Add 'ctrl_interface=/var/run/wpa_supplicant' to 1st line of 'wpa_supplicant.conf'
+sed -i '1 i\ctrl_interface=/var/run/wpa_supplicant\n' /etc/wpa_supplicant/wpa_supplicant-"$wifi_int".conf
 systemctl enable wpa_supplicant@"$wifi_int"
 systemctl enable dhcpcd@"$wifi_int"
 
