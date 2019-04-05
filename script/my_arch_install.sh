@@ -191,7 +191,7 @@ systemctl enable wpa_supplicant@"$wifi_int"
 systemctl enable dhcpcd@"$wifi_int"
 # 10.2 Do not wait at startup for dhcpcd
 mkdir /etc/systemd/system/dhcpcd@.service.d
-echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > no-wait.conf
+echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > /etc/systemd/system/dhcpcd@.service.d/no-wait.conf
 
 # 11 Install and configure grub
 yes | pacman -S grub efibootmgr --noconfirm
