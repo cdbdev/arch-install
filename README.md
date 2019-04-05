@@ -8,9 +8,10 @@ Download this repo with:
 Download an installation image from https://www.archlinux.org/download/ and create the installation media:
 
 In **GNU/Linux**:
-Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (Do not append a partition number, so do not use something like /dev/sdb1):
+Run the following commands, replacing /dev/sdx with your drive, e.g. /dev/sdb. (Do not append a partition number, so do not use something like /dev/sdb1):
 
 ```
+#  mkfs.vfat -I /dev/sdx
 #  dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
 ```
 
