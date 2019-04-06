@@ -95,12 +95,10 @@ mkswap /dev/sda5
 swapon /dev/sda5
 
 
-# ----------------------
-# Mount the file systems
-# ----------------------
+# ---------------------
+# Mount the file system
+# ---------------------
 mount /dev/sda4 /mnt
-mkdir /mnt/efi
-mount /dev/sda1 /mnt/efi
 
 
 # -----------------
@@ -127,6 +125,12 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp my_arch_install_post.sh /mnt/root/
 cp wpa_supplicant-"$wifi_int".conf /mnt/root/
 cp -r conf/. /mnt/root/
+
+# ------------------------------------
+# Mount efi partition for installation
+# ------------------------------------
+mkdir /mnt/efi
+mount /dev/sda1 /mnt/efi
 
 # Chroot
 echo ":: Change root into the new system"
