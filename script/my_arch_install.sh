@@ -126,9 +126,9 @@ cp my_arch_install_post.sh /mnt/root/
 cp wpa_supplicant-"$wifi_int".conf /mnt/root/
 cp -r conf/. /mnt/root/
 
-# ------------------------------------
-# Mount efi partition for installation
-# ------------------------------------
+# -----------------------------------------
+# Mount efi partition for GRUB installation
+# -----------------------------------------
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
