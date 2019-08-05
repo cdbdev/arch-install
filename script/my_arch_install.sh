@@ -201,7 +201,8 @@ echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > /etc/syste
 yes | pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
 # 11.1 Fix dark screen & hibernate (add 'acpi_backlight=none amdgpu.dc=0')
-sed -i 's/\"quiet/\"quiet acpi_backlight=none amdgpu.dc=0/' /etc/default/grub
+# sed -i 's/\"quiet/\"quiet acpi_backlight=none amdgpu.dc=0/' /etc/default/grub
+sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"'
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
@@ -222,5 +223,5 @@ EOF
 # ------
 # Reboot
 # ------
-umount -R /mnt
-reboot
+echo ":: Installation finished." 
+echo ":: You can unmount [umount -R /mnt] and reboot now [reboot], or remain in the system."
