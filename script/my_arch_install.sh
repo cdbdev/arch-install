@@ -10,7 +10,7 @@
 
 
 # ----------------------------------------------- 
-# Initial setup ( keyboard, wireless, time/date )
+# Initial setup ( wireless, time/date )
 # ----------------------------------------------- 
 
 echo ":: Disabling soft blocks..."
