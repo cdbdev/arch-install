@@ -13,9 +13,6 @@
 # Initial setup ( keyboard, wireless, time/date )
 # ----------------------------------------------- 
 
-echo ":: Loading BE keyboard..."
-loadkeys be-latin1
-
 echo ":: Disabling soft blocks..."
 rfkill unblock all
 
