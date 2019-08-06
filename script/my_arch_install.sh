@@ -189,7 +189,8 @@ mv /root/wpa_supplicant-"$wifi_int".conf /etc/wpa_supplicant/
 # 10.1 Add 'ctrl_interface=/var/run/wpa_supplicant' to 1st line of 'wpa_supplicant.conf'
 sed -i '1 i\ctrl_interface=/var/run/wpa_supplicant\n' /etc/wpa_supplicant/wpa_supplicant-"$wifi_int".conf
 systemctl enable wpa_supplicant@"$wifi_int"
-systemctl enable dhcpcd@"$wifi_int"
+# systemctl enable dhcpcd@"$wifi_int"
+systemctl enable dhcpcd.service
 # 10.2 Do not wait at startup for dhcpcd
 mkdir /etc/systemd/system/dhcpcd@.service.d
 echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > /etc/systemd/system/dhcpcd@.service.d/no-wait.conf
