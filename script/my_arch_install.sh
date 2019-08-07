@@ -200,7 +200,7 @@ yes | pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
 # 11.1 Fix dark screen & hibernate (add 'acpi_backlight=none amdgpu.dc=0')
 # sed -i 's/\"quiet/\"quiet acpi_backlight=none amdgpu.dc=0/' /etc/default/grub
-sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"'
+sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
