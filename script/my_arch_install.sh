@@ -214,7 +214,7 @@ mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/
 yes | pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator thunar-volman catfish gvfs dosfstools wget --noconfirm
 
 # 12 ALT: Install and prepare OpenBox
-# yes | pacman -S xorg-server openbox obconf lxappearance-obconf-gtk3 feh lightdm light-locker thunar xfce4-terminal mousepad tint2 conky network-manager network-manager-applet firefox screenfetch xreader libreoffice-writer galculator gvfs dosfstools xfce4-power-manager --noconfirm
+# yes | pacman -S xorg-server openbox obconf lxappearance-obconf-gtk3 feh lightdm lightdm-gtk-greeter light-locker thunar xfce4-terminal mousepad tint2 conky network-manager network-manager-applet firefox screenfetch xreader libreoffice-writer galculator gvfs dosfstools xfce4-power-manager --noconfirm
 
 echo ":: Exit chroot..."
 EOF
