@@ -31,10 +31,17 @@ done
 echo
 
 # Ask credentials for new user
-echo -n ">> Please enter a name for the new user: "
-read new_user
-echo -n ">> Please enter a password for new user: "
-read -s new_user_pass
+while true; do
+	echo -n ">> Please enter a password for new user: "
+	read -s new_user_pass
+	echo
+
+	echo -n ">> New user password (confirm): "
+	read -s new_user_pass_cnf
+	echo
+
+	[ "$new_user_pass" = "$new_user_pass_cnf" ] && break || echo "try again."
+done
 echo
 
 # Ask interface name and enable it
