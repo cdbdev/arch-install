@@ -26,7 +26,7 @@ while true; do
 	read -s root_pass_cnf
 	echo
 
-	[ "$root_pass" = "$root_pass_cnf" ] && break || echo "try again."
+	[ "$root_pass" = "$root_pass_cnf" ] && break || echo "Passwords don't match, try again."
 done
 echo
 
@@ -40,7 +40,7 @@ while true; do
 	read -s new_user_pass_cnf
 	echo
 
-	[ "$new_user_pass" = "$new_user_pass_cnf" ] && break || echo "try again."
+	[ "$new_user_pass" = "$new_user_pass_cnf" ] && break || echo "Passwords don't match, try again."
 done
 echo
 
