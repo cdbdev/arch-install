@@ -17,8 +17,17 @@ echo ":: Disabling soft blocks..."
 rfkill unblock all
 
 # Ask password for root
-echo -n ">> Please enter a password for 'root' user: "
-read -s root_pass
+while true; do
+	echo -n ">> Please enter root password: "
+	read -s root_pass
+	echo
+
+	echo -n ">> Root password (confirm): "
+	read -s root_pass_cnf
+	echo
+
+	[ "$root_pass" = "$root_pass_cnf" ] && break || echo "try again."
+done
 echo
 
 # Ask credentials for new user
