@@ -222,17 +222,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # 12  Install and prepare XFCE
 yes | pacman -S xorg-server --noconfirm
-yes | pacman -S xfce4 xfce4-goodies --noconfirm
+yes | pacman -S xfce4 xfce4-goodies xfce4-power-manager thunar-volman catfish --noconfirm
 yes | pacman -S lightdm lightdm-gtk-greeter --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
-yes | pacman -S firefox ttf-dejavu arc-gtk-theme arc-icon-theme papirus-icon-theme pulseaudio screenfetch xreader libreoffice galculator thunar-volman catfish xfce4-power-manager gvfs dosfstools wget --noconfirm
-
-# 12 ALT: Install and prepare OpenBox
-# yes | pacman -S xorg-server openbox obconf lxappearance-obconf-gtk3 feh lightdm lightdm-gtk-greeter light-locker thunar-volman xfce4-terminal mousepad tint2 conky network-manager network-manager-applet firefox screenfetch xreader libreoffice-writer galculator gvfs dosfstools xfce4-power-manager wget --noconfirm
-# systemctl enable lightdm.service
-# mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
+yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme pulseaudio screenfetch xreader libreoffice galculator gvfs dosfstools wget --noconfirm
 
 echo ":: Exit chroot..."
 EOF
