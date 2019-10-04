@@ -227,7 +227,7 @@ yes | pacman -S lightdm lightdm-gtk-greeter --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
-yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs dosfstools --noconfirm
+yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs dosfstools conky --noconfirm
 
 echo ":: Exit chroot..."
 EOF
