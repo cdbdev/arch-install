@@ -31,6 +31,9 @@ done
 echo
 
 # Ask credentials for new user
+echo -n ">> Please enter a name for the new user: "
+read new_user
+
 while true; do
 	echo -n ">> Please enter a password for new user: "
 	read -s new_user_pass
