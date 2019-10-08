@@ -154,7 +154,9 @@ mount /dev/sda1 /mnt/efi
 mkdir /mnt/windows
 mount /dev/sda3 /mnt/windows
 
+# --------
 # Chroot
+# --------
 echo ":: Change root into the new system"
 arch-chroot /mnt /bin/bash <<EOF
 
