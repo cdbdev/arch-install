@@ -182,7 +182,7 @@ echo -n ">> Setup new user"
 useradd --create-home "$new_user"
 echo "${new_user}:${new_user_pass}" | chpasswd
 mv /root/my_arch_install_post.sh /home/"$new_user"/
-mv /root/90-blueman.rules /home/"$new_user"/
+mv /root/90-blueman.rules /etc/polkit-1/rules.d/
 
 # 7 Retrieve latest mirrors and update mirrorlist
 echo ":: Updating mirrorlist..."
@@ -191,7 +191,7 @@ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
-yes | pacman -S e2fsprogs vi pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio wget dosfstools --noconfirm
+yes | pacman -S e2fsprogs vi pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio blueman wget dosfstools --noconfirm
 # 8.1 Setup nftables
 mv /root/nftables.conf /etc/
 systemctl enable nftables.service
@@ -221,15 +221,24 @@ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
 #sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-
 # 12  Install and prepare XFCE
 yes | pacman -S xorg-server --noconfirm
 yes | pacman -S xfce4 xfce4-goodies xfce4-power-manager thunar-volman catfish --noconfirm
-yes | pacman -S lightdm lightdm-gtk-greeter --noconfirm
+yes | pacman -S lightdm lightdm-gtk-greeter light-locker --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
 yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs conky --noconfirm
+
+# 13  Add screenfetch
+echo screenfetch >> /home/"$new_user"/.bashrc
+
+# 14  Discard unused packages weekly
+systemctl enable paccache.timer
+
+# 15  Enable bluetooth
+systemctl enable bluetooth
+
 
 echo ":: Exit chroot..."
 EOF
