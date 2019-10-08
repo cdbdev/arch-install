@@ -35,7 +35,7 @@ sudo systemctl enable paccache.timer
 # Install light locker
 # ----------------------------------------------- 
 echo ":: Installing light-locker..."
-yes | sudo pacman -S light-locker xfce4-power-manager --noconfirm
+yes | sudo pacman -S light-locker --noconfirm
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command --lock" --create -t string
 
 # ----------------------------------------------- 
