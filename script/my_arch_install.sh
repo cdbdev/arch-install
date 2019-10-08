@@ -123,7 +123,7 @@ mount /dev/sda4 /mnt
 
 # Rank mirrors
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&protocol=http&protocol=https" > /etc/pacman.d/mirrorlist
+curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&country=US&protocol=http&protocol=https" > /etc/pacman.d/mirrorlist
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
 
 # Install base
