@@ -191,7 +191,7 @@ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
-yes | pacman -S e2fsprogs vi pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio blueman wget dosfstools --noconfirm
+yes | pacman -S e2fsprogs vi pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio blueman wget dosfstools ntfs-3g os-prober --noconfirm
 # 8.1 Setup nftables
 mv /root/nftables.conf /etc/
 systemctl enable nftables.service
