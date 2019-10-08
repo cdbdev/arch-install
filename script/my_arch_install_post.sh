@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # ----------------------------------------------------------------------- #
-# Arch Linux POST install script						                              #
+# Arch Linux POST install script
 # ----------------------------------------------------------------------- #
-# Author    : Chris							                                          #
-# Project   : https://github.com/cdbdev/arch-install			                #
-# Reference : https://wiki.archlinux.org/index.php/Installation_guide	    #
+# Author    : Chris	
+# Project   : https://github.com/cdbdev/arch-install
+# Reference : https://wiki.archlinux.org/index.php/Installation_guide	
 # ----------------------------------------------------------------------- #
 
 
