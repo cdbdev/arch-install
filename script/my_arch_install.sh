@@ -126,7 +126,7 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&country=FR&country=US&protocol=http&protocol=https" > /etc/pacman.d/mirrorlist
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
 
-# Install base
+# Install base + kernel(linux)
 pacstrap /mnt base linux
 
 
