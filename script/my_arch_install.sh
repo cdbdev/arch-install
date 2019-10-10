@@ -231,7 +231,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # 12  Install and prepare XFCE
 yes | pacman -S xorg-server --noconfirm
-yes | pacman -S xfce4 xfce4-goodies xfce4-power-manager thunar-volman catfish --noconfirm
+yes | pacman -S xfce4 xfce4-goodies xfce4-power-manager thunar-volman catfish xfce4-session --noconfirm
 yes | pacman -S lightdm lightdm-gtk-greeter light-locker --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
