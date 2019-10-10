@@ -247,6 +247,8 @@ systemctl enable paccache.timer
 # 15  Enable bluetooth
 systemctl enable bluetooth
 
+# 16. Disable acpi backlight (amdgpu backlight is already used)
+systemctl mask systemd-backlight@backlight:acpi_video0.service
 
 echo ":: Exit chroot..."
 EOF
