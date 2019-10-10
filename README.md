@@ -126,7 +126,7 @@ Put server ‘Belgium’ on top in : `/etc/pacman.d/mirrorlist`.
 
 ### Install the base packages
 Use the pacstrap script to install the `base` package group:  
-> Since 2019-10-06 the kernel `linux` has te be added explicitely
+> _Update: Since 2019-10-06 the kernel `linux` has te be added to pacstrap explicitely_
 ```
 #  pacstrap /mnt base linux
 ```  
