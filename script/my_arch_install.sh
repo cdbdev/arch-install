@@ -190,7 +190,6 @@ echo -n ">> Setup new user"
 useradd --create-home "$new_user"
 echo "${new_user}:${new_user_pass}" | chpasswd
 mv /root/my_arch_install_post.sh /home/"$new_user"/
-mv /root/90-blueman.rules /etc/polkit-1/rules.d/
 
 # 7 Retrieve latest mirrors and update mirrorlist
 echo ":: Updating mirrorlist..."
@@ -237,6 +236,7 @@ sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
 yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs conky --noconfirm
+mv /root/90-blueman.rules /etc/polkit-1/rules.d/
 
 # 13  Add screenfetch
 echo screenfetch >> /home/"$new_user"/.bashrc
