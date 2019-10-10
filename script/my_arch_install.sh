@@ -148,12 +148,6 @@ cp -r conf/. /mnt/root/
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
-# -----------------------------------------
-# Mount windows partition for dual boot
-# -----------------------------------------
-mkdir /mnt/windows
-mount /dev/sda3 /mnt/windows
-
 # --------
 # Chroot
 # --------
