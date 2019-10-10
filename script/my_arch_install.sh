@@ -127,7 +127,7 @@ curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&cou
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
 
 # Install base + kernel(linux)
-pacstrap /mnt base linux
+pacstrap /mnt base linux linux-firmware
 
 
 # --------------------
@@ -199,7 +199,7 @@ reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
-yes | pacman -S e2fsprogs vi amd-ucode pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio blueman wget dosfstools ntfs-3g os-prober --noconfirm
+yes | pacman -S dhcpcd e2fsprogs vi amd-ucode pacman-contrib sudo nftables wpa_supplicant vim acpi pulseaudio blueman wget dosfstools ntfs-3g os-prober --noconfirm
 # 8.1 Setup nftables
 mv /root/nftables.conf /etc/
 systemctl enable nftables.service
