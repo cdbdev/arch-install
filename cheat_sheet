@@ -19,6 +19,18 @@ Server=https://archive.archlinux.org/repos/2019/10/14/$repo/os/$arch
 <END
 # pacman -Syyuu
 
+- Skip package from being upgraded (Warning: partial upgrades are unsupported)
+Edit '/etc/pacman.conf' and add:
+BEGIN>
+IgnorePkg=<package1> <package2>
+<END
+
+- Skip package group from being upgraded (Warning: partial upgrades are unsupported)
+Edit '/etc/pacman.conf' and add:
+BEGIN>
+IgnoreGroup=gnome
+<END
+
 - Search for packages that own a particular file (e.g. find package for file: iwlwifi-8000C-36.ucode)
 pacman -Fo /usr/lib/firmware/iwlwifi-8000C-36.ucode
 
