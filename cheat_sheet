@@ -1,3 +1,21 @@
-# Arch commands
+[Arch commands]
 
-# General GNU/Linux commands
+- Full system upgrade
+# pacman -Syu
+
+- Display information on a given package (if it is installed!)
+# pacman -Qi <package>
+
+- Return to an earlier package version (if pacman cache was not cleaned!)
+# pacman -U /var/cache/pacman/pkg/package-old_version.pkg.tar.xz
+
+- Restore all packages to a specific date
+Replace your '/etc/pacman.d/mirrorlist' with the following content:
+-->Server=https://archive.archlinux.org/repos/2014/03/30/$repo/os/$arch<--
+# pacman -Syyuu
+
+- Search for packages that own a particular file (e.g. find package for file: iwlwifi-8000C-36.ucode)
+pacman -Fo /usr/lib/firmware/iwlwifi-8000C-36.ucode
+
+
+[General GNU/Linux commands]
