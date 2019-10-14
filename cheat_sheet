@@ -29,4 +29,10 @@ Edit '/etc/pacman.conf' and add:
 pacman -Fo /usr/lib/firmware/iwlwifi-8000C-36.ucode
 
 
-[General GNU/Linux commands]
+[General GNU/Linux commands + info]
+
+> Kernel
+Already loaded modules can be fetched with:
+# lsmod
+When the kernel needs a feature that is not resident in the kernel, the kernel module daemon kmod execs the
+'modprobe' command to load the module in. A module name ends with '.ko'.
