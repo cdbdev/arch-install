@@ -1,37 +1,31 @@
 [Arch commands]
 
-- Full system upgrade
+> Full system upgrade
 # pacman -Syu
 
-- Remove a package + dependencies which are not required by any other installed package + configuration files
+> Remove a package + dependencies which are not required by any other installed package + configuration files
 # pacman -Rsn package_name
 
-- Display information on a given package (if it is installed!)
+> Display information on a given package (if it is installed!)
 # pacman -Qi <package>
 
-- Return to an earlier package version (if pacman cache was not cleaned!)
+> Return to an earlier package version (if pacman cache was not cleaned!)
 # pacman -U /var/cache/pacman/pkg/package-old_version.pkg.tar.xz
 
-- Restore all packages to a specific date and perform system upgrade
+> Restore all packages to a specific date and perform system upgrade
 Replace your '/etc/pacman.d/mirrorlist' with the following content:
---
-Server=https://archive.archlinux.org/repos/2019/10/14/$repo/os/$arch
---
+[CODE]Server=https://archive.archlinux.org/repos/2019/10/14/$repo/os/$arch[/CODE]
 # pacman -Syyuu
 
-- Skip package from being upgraded (Warning: partial upgrades are unsupported)
+> Skip package from being upgraded (Warning: partial upgrades are unsupported)
 Edit '/etc/pacman.conf' and add:
---
-IgnorePkg=<package1> <package2>
---
+[CODE]IgnorePkg=<package1> <package2>[/CODE]
 
-- Skip package group from being upgraded (Warning: partial upgrades are unsupported)
+> Skip package group from being upgraded (Warning: partial upgrades are unsupported)
 Edit '/etc/pacman.conf' and add:
---
-IgnoreGroup=gnome
---
+[CODE]IgnoreGroup=gnome[/CODE]
 
-- Search for packages that own a particular file (e.g. find package for file: iwlwifi-8000C-36.ucode)
+> Search for packages that own a particular file (e.g. find package for file: iwlwifi-8000C-36.ucode)
 pacman -Fo /usr/lib/firmware/iwlwifi-8000C-36.ucode
 
 
