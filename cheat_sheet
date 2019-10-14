@@ -42,5 +42,5 @@ When the kernel needs a feature that is not resident in the kernel, the kernel m
 >> Print message buffer from kernel
 dmesg
 
->> List hardware info (graphics)
-# lspci -vnnk | grep -EA3 'VGA|3D|Display'
+>> List hardware info
+# lspci -v | more
