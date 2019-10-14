@@ -43,4 +43,4 @@ When the kernel needs a feature that is not resident in the kernel, the kernel m
 dmesg
 
 >> List hardware info (graphics)
-# lspci -vnn | grep -EA3 'VGA|3D|Display'
+# lspci -vnnk | grep -EA3 'VGA|3D|Display'
