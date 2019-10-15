@@ -139,6 +139,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Copy necessary files to new system
 cp my_arch_install_post.sh /mnt/root/
+cp /etc/pacman.d/mirrorlist /mnt/root/
 cp wpa_supplicant-"$wifi_int".conf /mnt/root/
 cp -r conf/. /mnt/root/
 
@@ -185,10 +186,11 @@ useradd --create-home "$new_user"
 echo "${new_user}:${new_user_pass}" | chpasswd
 mv /root/my_arch_install_post.sh /home/"$new_user"/
 
-# 7 Retrieve latest mirrors and update mirrorlist
+# 7 Update mirrorlist
 echo ":: Updating mirrorlist..."
-yes | pacman -S reflector --noconfirm
-reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+#yes | pacman -S reflector --noconfirm
+#reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+mv /root/mirrorlist /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
