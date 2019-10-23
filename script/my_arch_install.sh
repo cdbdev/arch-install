@@ -217,15 +217,7 @@ systemctl enable dhcpcd.service
 mkdir /etc/systemd/system/dhcpcd@.service.d
 echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > /etc/systemd/system/dhcpcd@.service.d/no-wait.conf
 
-# 11 Install and configure grub
-yes | pacman -S grub efibootmgr --noconfirm
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
-# 11.1 Fix dark screen, hibernate & screen tearing (add 'acpi_backlight=none amdgpu.dc=0')
-#sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"' /etc/default/grub
-os-prober
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# 12  Install and prepare XFCE
+# 11  Install and prepare XFCE
 yes | pacman -S xorg-server --noconfirm
 yes | pacman -S xfce4 xfce4-goodies xfce4-power-manager thunar-volman catfish xfce4-session --noconfirm
 yes | pacman -S lightdm lightdm-gtk-greeter light-locker --noconfirm
@@ -234,6 +226,14 @@ systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
 yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs conky --noconfirm
 mv /root/90-blueman.rules /etc/polkit-1/rules.d/
+
+# 12 Install and configure grub
+yes | pacman -S grub efibootmgr --noconfirm
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
+# 12.1 Fix dark screen, hibernate & screen tearing (add 'acpi_backlight=none amdgpu.dc=0')
+#sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"' /etc/default/grub
+os-prober
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # 13  Add screenfetch
 echo screenfetch >> /home/"$new_user"/.bashrc
