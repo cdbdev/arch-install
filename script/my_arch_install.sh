@@ -224,7 +224,7 @@ yes | pacman -S lightdm lightdm-gtk-greeter light-locker --noconfirm
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm.service
 mv /root/20-keyboard.conf /etc/X11/xorg.conf.d/ 
-yes | pacman -S firefox ttf-dejavu arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs conky --noconfirm
+yes | pacman -S firefox ttf-dejavu ttf-liberation arc-gtk-theme moka-icon-theme screenfetch xreader libreoffice galculator gvfs conky --noconfirm
 mv /root/90-blueman.rules /etc/polkit-1/rules.d/
 
 # 12 Install and configure grub
