@@ -127,7 +127,7 @@ curl "https://www.archlinux.org/mirrorlist/?country=BE&country=NL&country=DE&cou
 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
 
 # Install base + kernel(linux)
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-lts linux-firmware
 
 
 # --------------------
