@@ -194,7 +194,7 @@ mv /root/mirrorlist /etc/pacman.d/mirrorlist
 
 # 8 Install user specific packages
 echo ":: Installing user specific packages..."
-yes | pacman -S xf86-video-amdgpu dhcpcd e2fsprogs vi amd-ucode pacman-contrib sudo nftables wpa_supplicant base-devel vim acpi pulseaudio blueman wget which dosfstools ntfs-3g os-prober --noconfirm
+yes | pacman -S xf86-video-amdgpu dhcpcd e2fsprogs vi amd-ucode pacman-contrib sudo nftables wpa_supplicant base-devel arch-install-scripts vim acpi pulseaudio blueman wget which dosfstools ntfs-3g os-prober --noconfirm
 # 8.1 Setup nftables
 mv /root/nftables.conf /etc/
 systemctl enable nftables.service
