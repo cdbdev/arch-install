@@ -7,3 +7,6 @@ provides is _tearfree_ in order to help with tearing for non-composited xorg set
 
 # linux-lts
 In case of issues with the _stable_ kernel, you will be able to use the **LTS** version. The **LTS (long-term support)** version is advantageous if stability is your first priority. It doesn’t mean that the latest kernel, or the default kernel, is less stable, it just means that the LTS kernel won’t be updated as frequently.
+
+# os-prober
+For this package to work correctly, you also need to install the `which` package. Normally running 'grub-mkconfig' after installing the 'os-prober' package will detect other operating systems. If the `which` package is not installed, grub-mkconfig will not properly run the '30_os-prober' script under '/etc/grub.d/' (see line 33 of '30_os-prober' which assumes availability of 'which').
