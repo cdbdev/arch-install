@@ -4,3 +4,6 @@
 Both that and amdgpu use roughly the same technologies for providing **xorg/2D acceleration**, so unless you need a specific functionality that 
 `xf86-video-amdgpu` provides, you might indeed be able to simply sustain on the modesetting driver alone. E.g. one option the `xf86-video-amdgpu`
 provides is _tearfree_ in order to help with tearing for non-composited xorg setups, which the modesetting driver doesn't.
+
+# linux-lts
+In case of issues with the _stable_ kernel, you will be able to use the **LTS** version. The **LTS (long-term support)** version is advantageous if stability is your first priority. It doesn’t mean that the latest kernel, or the default kernel, is less stable, it just means that the LTS kernel won’t be updated as frequently.
