@@ -21,5 +21,5 @@ The correct way to check is:
 ```bash
 lspci -nn | grep '\[03'
 ```
-This command finds the card based on the class number **[03xx]**.  
+This command finds the card based on the class number **[03xx]** which is the _Display controller_ class number.  
 See: https://pci-ids.ucw.cz/read/PD.
