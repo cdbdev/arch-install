@@ -11,7 +11,7 @@ In case of issues with the _stable_ kernel, you will be able to use the **LTS** 
 # os-prober
 For this package to work correctly, you also need to install the `which` package. Normally running 'grub-mkconfig' after installing the 'os-prober' package will detect other operating systems. If the `which` package is not installed, grub-mkconfig will not properly run the '30_os-prober' script under '/etc/grub.d/' (see line 33 of '30_os-prober' which assumes availability of 'which').
 
-# Disable acpi backlight (amdgpu backlight is already used)
+# Disable acpi backlight
 Since the system already uses _amdgpu backlight_, you can disable the one from _acpi_.  
 ```bash
 systemctl mask systemd-backlight@backlight:acpi_video0.service
