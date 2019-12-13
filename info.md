@@ -16,3 +16,9 @@ Since the system already uses _amdgpu backlight_, you can disable the one from _
 ```bash
 systemctl mask systemd-backlight@backlight:acpi_video0.service
 ```
+# Check your graphics driver
+The correct way to check is:
+```bash
+lspci -nn | grep '\[03'
+```
+This command finds the card based on the class number **[03xx]**. See: https://pci-ids.ucw.cz/read/PD.
