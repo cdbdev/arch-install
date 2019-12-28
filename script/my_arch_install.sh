@@ -216,7 +216,7 @@ systemctl enable dhcpcd.service
 # 10.2 Do not wait at startup for dhcpcd
 mkdir /etc/systemd/system/dhcpcd@.service.d
 echo -e "[Service]\nExecStart=\nExecStart=/usr/bin/dhcpcd -b -q %I" > /etc/systemd/system/dhcpcd@.service.d/no-wait.conf
-# 10.3 enable service: rfkill unlock
+# 10.3 unblock all softblocked interfaces
 systemctl enable rfkill-unblock@all.service
 
 # 11  Install and prepare XFCE
