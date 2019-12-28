@@ -234,6 +234,8 @@ yes | pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader=arch
 # 12.1 Fix dark screen, hibernate & screen tearing (add 'acpi_backlight=none amdgpu.dc=0')
 #sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/c\GRUB_CMDLINE_LINUX_DEFAULT=\"quiet acpi_backlight=none amdgpu.dc=0\"' /etc/default/grub
+# 12.1 Disable grub submenu
+echo "GRUB_DISABLE_SUBMENU=y" >> /etc/default/grub
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
 
